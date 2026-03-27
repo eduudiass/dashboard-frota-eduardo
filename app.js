@@ -1,158 +1,85 @@
-// ===================== APP.JS COMPLETO CORRIGIDO =====================
+// ===================== APP.JS FINAL FUNCIONAL =====================
 
-// Dados globais
+// Dados
 let dadosGlobais = null;
-let charts = {};
+let chart = null;
 
-// ===================== CARREGAR EXCEL DIRETO =====================
-async function carregarDadosExcel(file) {
-    mostrarLoading(true);
-    try {
-        const data = await file.arrayBuffer();
-        const workbook = XLSX.read(data);
+// ===================== EXCEL =====================
+document.getElementById('fileInput').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-        dadosGlobais = extrairDadosPlanilha(workbook);
-        inicializarDashboard();
-    } catch (error) {
-        console.error('Erro ao carregar Excel:', error);
-    } finally {
-        mostrarLoading(false);
-    }
-}
+    const data = await file.arrayBuffer();
+    const workbook = XLSX.read(data);
 
-// ===================== FALLBACK JSON =====================
-async function carregarDados() {
-    mostrarLoading(true);
-    try {
-        const response = await fetch('dados.json?nocache=' + new Date().getTime());
-        dadosGlobais = await response.json();
-        inicializarDashboard();
-    } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-    } finally {
-        mostrarLoading(false);
-    }
-}
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const json = XLSX.utils.sheet_to_json(sheet);
 
-// ===================== INICIALIZAÇÃO =====================
-function inicializarDashboard() {
+    dadosGlobais = {
+        veiculos: json,
+        resumo: {
+            total_veiculos: json.length,
+            veiculos_ativos: json.length,
+            receita_mensal: json.reduce((s, v) => s + (v.aluguel_mensal || 0), 0),
+            lucro_mensal: json.reduce((s, v) => s + (v.aluguel_mensal || 0), 0)
+        }
+    };
+
+    atualizarTudo();
+});
+
+// ===================== ATUALIZAR TELA =====================
+function atualizarTudo() {
     atualizarResumo();
-    criarGraficos();
-    configurarEventos();
+    atualizarLista();
+    atualizarGrafico();
 }
 
 // ===================== RESUMO =====================
 function atualizarResumo() {
-    const { resumo } = dadosGlobais;
-
-    document.getElementById('totalVeiculos').textContent = resumo.total_veiculos || 0;
-    document.getElementById('veiculosAtivos').textContent = resumo.veiculos_ativos || 0;
-
-    document.getElementById('kpiReceita').textContent = formatarMoeda(resumo.receita_mensal || 0);
-    document.getElementById('kpiManutencao').textContent = formatarMoeda(resumo.total_manutencao || 0);
-    document.getElementById('kpiGastos').textContent = formatarMoeda(resumo.gastos_fixos_mensal || 0);
-
-    document.getElementById('kpiLucro').textContent = formatarMoeda(resumo.lucro_mensal || 0);
+    document.getElementById('totalVeiculos').textContent = dadosGlobais.resumo.total_veiculos;
+    document.getElementById('veiculosAtivos').textContent = dadosGlobais.resumo.veiculos_ativos;
+    document.getElementById('kpiReceita').textContent = dadosGlobais.resumo.receita_mensal;
+    document.getElementById('kpiLucro').textContent = dadosGlobais.resumo.lucro_mensal;
 }
 
-// ===================== GRÁFICOS =====================
-function criarGraficos() {
-    criarGraficoReceitas();
+// ===================== LISTA =====================
+function atualizarLista() {
+    const el = document.getElementById('listaVeiculos');
+    el.innerHTML = '';
+
+    dadosGlobais.veiculos.forEach(v => {
+        const div = document.createElement('div');
+        div.textContent = `${v.placa || ''} - ${v.aluguel_mensal || 0}`;
+        el.appendChild(div);
+    });
 }
 
-// ===================== GRÁFICO SIMPLES =====================
-function criarGraficoReceitas() {
+// ===================== GRÁFICO =====================
+function atualizarGrafico() {
     const ctx = document.getElementById('chartReceitas');
 
-    if (charts.receitas) charts.receitas.destroy();
+    if (chart) chart.destroy();
 
-    charts.receitas = new Chart(ctx, {
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: dadosGlobais.veiculos.map(v => v.placa),
             datasets: [{
-                label: 'Receita',
                 data: dadosGlobais.veiculos.map(v => v.aluguel_mensal || 0)
             }]
         }
     });
 }
 
-// ===================== EVENTOS =====================
-function configurarEventos() {
+// ===================== NAVEGAÇÃO =====================
+document.querySelectorAll('.nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
 
-    // NAV
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = item.dataset.page;
-            navegarPara(page);
-        });
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(`page-${btn.dataset.page}`).classList.add('active');
+
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        btn.classList.add('active');
     });
-
-    // INPUT EXCEL
-    document.getElementById('fileInput')?.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file && file.name.endsWith('.xlsx')) {
-            carregarDadosExcel(file);
-        }
-    });
-}
-
-// ===================== NAVEGAÇÃO CORRIGIDA =====================
-function navegarPara(page) {
-
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-        if (item.dataset.page === page) item.classList.add('active');
-    });
-
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-
-    const target = document.getElementById(`page-${page}`);
-    if (target) {
-        target.classList.add('active');
-    } else {
-        document.getElementById('page-dashboard').classList.add('active');
-    }
-}
-
-// ===================== EXTRAIR EXCEL =====================
-function extrairDadosPlanilha(workbook) {
-
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const json = XLSX.utils.sheet_to_json(sheet);
-
-    return {
-        resumo: {
-            total_veiculos: json.length,
-            veiculos_ativos: json.length,
-            receita_mensal: json.reduce((s, v) => s + (v.aluguel_mensal || 0), 0),
-            total_manutencao: 0,
-            gastos_fixos_mensal: 0,
-            lucro_mensal: 0
-        },
-        veiculos: json,
-        manutencao: [],
-        gastos: []
-    };
-}
-
-// ===================== UTIL =====================
-function mostrarLoading(mostrar) {
-    const overlay = document.getElementById('loadingOverlay');
-    if (!overlay) return;
-    overlay.classList.toggle('hidden', !mostrar);
-}
-
-function formatarMoeda(valor) {
-    return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    }).format(valor);
-}
-
-// ===================== INIT =====================
-document.addEventListener('DOMContentLoaded', () => {
-    carregarDados();
 });
