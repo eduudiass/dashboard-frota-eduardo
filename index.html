@@ -3,245 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Frota | Gestão Profissional</title>
+    <title>Gestão de Frota</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
+
+    <nav class="sidebar" id="sidebar">
         <div class="logo">
-            <div class="logo-icon">🚗</div>
-            <h2>Fleet<span class="highlight">Manager</span></h2>
+            <h2>🚗 Frota<span class="highlight">App</span></h2>
         </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active" data-target="dashboard">📊 Resumo</a></li>
+            <li><a href="#" data-target="veiculos">🚙 Veículos</a></li>
+            <li><a href="#" data-target="receitas">💰 Receitas</a></li>
+            <li><a href="#" data-target="gastos">💸 Gastos</a></li>
+            <li><a href="#" data-target="manutencao">🔧 Manutenção</a></li>
+            <li><a href="#" data-target="compras">🛒 Compras</a></li>
+            <li><a href="#" data-target="vendas">🤝 Vendas</a></li>
+        </ul>
+    </nav>
+
+    <header class="mobile-header">
+        <h2>🚗 Frota<span class="highlight">App</span></h2>
+        <button id="menu-btn">☰</button>
+    </header>
+
+    <main class="main-content">
         
-        <nav class="nav-menu">
-            <a href="#" class="nav-item active" data-page="dashboard">
-                <span class="nav-icon">📊</span>
-                <span class="nav-text">Dashboard</span>
-            </a>
-            <a href="#" class="nav-item" data-page="veiculos">
-                <span class="nav-icon">🚙</span>
-                <span class="nav-text">Veículos</span>
-            </a>
-            <a href="#" class="nav-item" data-page="manutencoes">
-                <span class="nav-icon">🔧</span>
-                <span class="nav-text">Manutenções</span>
-            </a>
-            <a href="#" class="nav-item" data-page="receitas">
-                <span class="nav-icon">💰</span>
-                <span class="nav-text">Receitas</span>
-            </a>
-            <a href="#" class="nav-item" data-page="gastos">
-                <span class="nav-icon">💸</span>
-                <span class="nav-text">Gastos</span>
-            </a>
-            <a href="#" class="nav-item" data-page="compras">
-                <span class="nav-icon">🛒</span>
-                <span class="nav-text">Compras</span>
-            </a>
-        </nav>
-        
-        <div class="sidebar-footer">
-            <button class="btn-upload" id="btnUpload">
-                <span>📤</span>
-                Atualizar Dados
-            </button>
-            <input type="file" id="fileInput" accept=".xlsx" style="display: none;">
+        <div class="upload-section">
+            <label for="excel-upload" class="upload-btn">
+                📂 Carregar Planilha Excel
+            </label>
+            <input type="file" id="excel-upload" accept=".xlsx, .xls" style="display: none;">
+            <span id="file-name">Nenhuma planilha carregada...</span>
         </div>
-    </div>
 
-    <div class="mobile-header">
-        <button class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="mobile-logo">Fleet<span class="highlight">Manager</span></div>
-        <div class="mobile-actions">
-            <button class="btn-mobile-upload" id="btnMobileUpload">📤</button>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="container" id="mainContainer">
-            
-            <div class="page active" id="page-dashboard">
-                <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Dashboard Geral</h1>
-                        <p class="page-subtitle">Visão completa da sua frota</p>
-                    </div>
-                    <div class="header-stats">
-                        <div class="stat-badge">
-                            <span class="stat-value" id="totalVeiculos">0</span>
-                            <span class="stat-label">Veículos</span>
-                        </div>
-                        <div class="stat-badge success">
-                            <span class="stat-value" id="veiculosAtivos">0</span>
-                            <span class="stat-label">Ativos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-icon success">💰</div>
-                        <div class="kpi-content">
-                            <div class="kpi-label">Receita Mensal</div>
-                            <div class="kpi-value" id="kpiReceita">R$ 0,00</div>
-                            <div class="kpi-change positive">+12.5% vs mês anterior</div>
-                        </div>
-                    </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-icon danger">🔧</div>
-                        <div class="kpi-content">
-                            <div class="kpi-label">Manutenções</div>
-                            <div class="kpi-value" id="kpiManutencao">R$ 0,00</div>
-                            <div class="kpi-change negative">+5.2% vs mês anterior</div>
-                        </div>
-                    </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-icon warning">💸</div>
-                        <div class="kpi-content">
-                            <div class="kpi-label">Gastos Fixos</div>
-                            <div class="kpi-value" id="kpiGastos">R$ 0,00</div>
-                            <div class="kpi-change neutral">Estável</div>
-                        </div>
-                    </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-icon" id="lucroIcon">📊</div>
-                        <div class="kpi-content">
-                            <div class="kpi-label">Lucro Mensal</div>
-                            <div class="kpi-value" id="kpiLucro">R$ 0,00</div>
-                            <div class="kpi-change" id="lucroChange">Calculando...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="charts-row">
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3>📈 Receitas por Veículo</h3>
-                            <select class="chart-filter">
-                                <option>Top 10</option>
-                                <option>Todos</option>
-                            </select>
-                        </div>
-                        <canvas id="chartReceitas"></canvas>
-                    </div>
-
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3>🔧 Manutenções por Veículo</h3>
-                            <select class="chart-filter">
-                                <option>Top 10</option>
-                                <option>Todos</option>
-                            </select>
-                        </div>
-                        <canvas id="chartManutencoes"></canvas>
-                    </div>
-                </div>
-
-                <div class="charts-row">
-                    <div class="chart-container small">
-                        <div class="chart-header">
-                            <h3>🚗 Status da Frota</h3>
-                        </div>
-                        <canvas id="chartStatus"></canvas>
-                    </div>
-
-                    <div class="chart-container small">
-                        <div class="chart-header">
-                            <h3>🏷️ Distribuição por Modelo</h3>
-                        </div>
-                        <canvas id="chartModelos"></canvas>
-                    </div>
-
-                    <div class="chart-container small">
-                        <div class="chart-header">
-                            <h3>💵 ROI por Veículo</h3>
-                        </div>
-                        <canvas id="chartROI"></canvas>
-                    </div>
-                </div>
-
-                <div class="quick-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon">⛽</div>
-                        <div>
-                            <div class="stat-number" id="statCombustivel">R$ 0</div>
-                            <div class="stat-text">Combustível/mês</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">🛠️</div>
-                        <div>
-                            <div class="stat-number" id="statServicos">0</div>
-                            <div class="stat-text">Serviços realizados</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">📍</div>
-                        <div>
-                            <div class="stat-number" id="statKM">0 km</div>
-                            <div class="stat-text">KM rodados total</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">💎</div>
-                        <div>
-                            <div class="stat-number" id="statInvestimento">R$ 0</div>
-                            <div class="stat-text">Investimento total</div>
-                        </div>
-                    </div>
-                </div>
+        <div id="dashboard" class="page active">
+            <div class="cards-grid" id="resumo-cards">
+                <div class="card empty-state">Carregue sua planilha para ver os dados.</div>
             </div>
-
-            <div class="page" id="page-veiculos"></div>
-            <div class="page" id="page-manutencoes"></div>
-            <div class="page" id="page-receitas"></div>
-            <div class="page" id="page-gastos"></div>
-            <div class="page" id="page-compras"></div>
-        </div>
-    </div>
-
-    <div class="modal" id="uploadModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>📤 Atualizar Planilha</h3>
-                <button class="modal-close" onclick="closeUploadModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="upload-zone" id="uploadZone">
-                    <div class="upload-icon">📊</div>
-                    <p class="upload-text">Arraste sua planilha aqui</p>
-                    <p class="upload-subtext">ou clique para selecionar</p>
-                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
-                        Escolher Arquivo
-                    </button>
-                </div>
-                <div class="upload-progress hidden" id="uploadProgress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <p class="progress-text" id="progressText">Processando...</p>
-                </div>
+            <div class="charts-grid">
+                <div class="chart-container"><canvas id="chartReceitasDespesas"></canvas></div>
+                <div class="chart-container"><canvas id="chartStatus"></canvas></div>
             </div>
         </div>
-    </div>
 
-    <div class="loading-overlay hidden" id="loadingOverlay">
-        <div class="loader">
-            <div class="loader-icon">🚗</div>
-            <p>Carregando dados...</p>
-        </div>
-    </div>
+        <div id="veiculos" class="page"><div class="table-responsive" id="tabela-veiculos"></div></div>
+        <div id="receitas" class="page"><div class="table-responsive" id="tabela-receitas"></div></div>
+        <div id="gastos" class="page"><div class="table-responsive" id="tabela-gastos"></div></div>
+        <div id="manutencao" class="page"><div class="table-responsive" id="tabela-manutencao"></div></div>
+        <div id="compras" class="page"><div class="table-responsive" id="tabela-compras"></div></div>
+        <div id="vendas" class="page"><div class="table-responsive" id="tabela-vendas"></div></div>
 
-    <script src="app.js"></script>
-    <script src="pages.js"></script>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
