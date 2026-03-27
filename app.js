@@ -15,19 +15,13 @@ async function carregarDados() {
         dadosGlobais.gastos = dadosGlobais.gastos || [];
         dadosGlobais.veiculos = dadosGlobais.veiculos || [];
         dadosGlobais.manutencao = dadosGlobais.manutencao || [];
+        dadosGlobais.resumo = dadosGlobais.resumo || {};
         
-        if (dadosGlobais.resumo) {
-            // Corrige nomes errados que vieram do JSON
-            dadosGlobais.resumo.gastos_fixos_mensal = dadosGlobais.resumo.gastos_fixos_mensal || dadosGlobais.resumo.gastos_fixos || 0;
-            dadosGlobais.resumo.total_investido = dadosGlobais.resumo.total_investido || dadosGlobais.resumo.investimento_total || 0;
-            dadosGlobais.resumo.total_veiculos = dadosGlobais.veiculos.length;
-            dadosGlobais.resumo.veiculos_ativos = dadosGlobais.veiculos.filter(v => v.status === 'Ativo').length;
-            
-            // Calcula o lucro real
-            if (typeof dadosGlobais.resumo.lucro_mensal === 'undefined') {
-                dadosGlobais.resumo.lucro_mensal = dadosGlobais.resumo.receita_mensal - dadosGlobais.resumo.total_manutencao - dadosGlobais.resumo.gastos_fixos_mensal;
-            }
-        }
+        // Garante que os totais existam
+        dadosGlobais.resumo.receita_mensal = Number(dadosGlobais.resumo.receita_mensal) || 0;
+        dadosGlobais.resumo.total_manutencao = Number(dadosGlobais.resumo.total_manutencao) || 0;
+        dadosGlobais.resumo.gastos_fixos_mensal = Number(dadosGlobais.resumo.gastos_fixos_mensal) || Number(dadosGlobais.resumo.gastos_fixos) || 0;
+        dadosGlobais.resumo.lucro_mensal = dadosGlobais.resumo.receita_mensal - dadosGlobais.resumo.total_manutencao - dadosGlobais.resumo.gastos_fixos_mensal;
 
         inicializarDashboard();
     } catch (error) {
@@ -49,15 +43,15 @@ function atualizarResumo() {
     const { resumo } = dadosGlobais;
     
     // Header stats
-    document.getElementById('totalVeiculos').textContent = resumo.total_veiculos;
-    document.getElementById('veiculosAtivos').textContent = resumo.veiculos_ativos;
+    document.getElementById('totalVeiculos').textContent = dadosGlobais.veiculos.length || 0;
+    document.getElementById('veiculosAtivos').textContent = dadosGlobais.veiculos.filter(v => v.status && v.status.toLowerCase() === 'ativo').length || 0;
     
-    // KPI Cards
-    document.getElementById('kpiReceita').textContent = formatarMoeda(resumo.receita_mensal);
-    document.getElementById('kpiManutencao').textContent = formatarMoeda(resumo.total_manutencao);
-    document.getElementById('kpiGastos').textContent = formatarMoeda(resumo.gastos_fixos_mensal);
+    // KPI Cards protegidos contra NaN
+    document.getElementById('kpiReceita').textContent = formatarMoeda(Number(resumo.receita_mensal) || 0);
+    document.getElementById('kpiManutencao').textContent = formatarMoeda(Number(resumo.total_manutencao) || 0);
+    document.getElementById('kpiGastos').textContent = formatarMoeda(Number(resumo.gastos_fixos_mensal) || 0);
     
-    const lucro = resumo.lucro_mensal;
+    const lucro = Number(resumo.lucro_mensal) || 0;
     const lucroEl = document.getElementById('kpiLucro');
     const lucroIcon = document.getElementById('lucroIcon');
     const lucroChange = document.getElementById('lucroChange');
@@ -77,14 +71,14 @@ function atualizarResumo() {
     }
     
     // Quick stats
-    const totalCombustivel = dadosGlobais.gastos.reduce((sum, g) => sum + (g.combustivel_mensal || 0), 0);
-    const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + (m.num_servicos || 0), 0);
-    const totalKM = dadosGlobais.veiculos.reduce((sum, v) => sum + (v.km_atual || 0), 0);
+    const totalCombustivel = dadosGlobais.gastos.reduce((sum, g) => sum + (Number(g.combustivel_mensal) || 0), 0);
+    const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + (Number(m.num_servicos) || 0), 0);
+    const totalKM = dadosGlobais.veiculos.reduce((sum, v) => sum + (Number(v.km_atual) || 0), 0);
     
     document.getElementById('statCombustivel').textContent = formatarMoeda(totalCombustivel);
     document.getElementById('statServicos').textContent = totalServicos;
     document.getElementById('statKM').textContent = totalKM.toLocaleString('pt-BR') + ' km';
-    document.getElementById('statInvestimento').textContent = formatarMoeda(resumo.total_investido);
+    document.getElementById('statInvestimento').textContent = formatarMoeda(Number(resumo.total_investido) || 0);
 }
 
 // Criar gráficos
@@ -96,26 +90,22 @@ function criarGraficos() {
     criarGraficoROI();
 }
 
-// Gráfico de receitas
 function criarGraficoReceitas() {
     const ctx = document.getElementById('chartReceitas');
-    
-    if (charts.receitas) {
-        charts.receitas.destroy();
-    }
+    if (charts.receitas) charts.receitas.destroy();
     
     const veiculosOrdenados = [...dadosGlobais.veiculos]
-        .filter(v => v.aluguel_mensal > 0)
-        .sort((a, b) => b.aluguel_mensal - a.aluguel_mensal)
+        .filter(v => Number(v.aluguel_mensal) > 0)
+        .sort((a, b) => Number(b.aluguel_mensal) - Number(a.aluguel_mensal))
         .slice(0, 10);
     
     charts.receitas = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: veiculosOrdenados.map(v => v.placa),
+            labels: veiculosOrdenados.map(v => v.placa || 'Sem Placa'),
             datasets: [{
                 label: 'Aluguel Mensal',
-                data: veiculosOrdenados.map(v => v.aluguel_mensal),
+                data: veiculosOrdenados.map(v => Number(v.aluguel_mensal) || 0),
                 backgroundColor: 'rgba(0, 255, 136, 0.2)',
                 borderColor: 'rgba(0, 255, 136, 1)',
                 borderWidth: 2,
@@ -123,46 +113,31 @@ function criarGraficoReceitas() {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: true,
+            responsive: true, maintainAspectRatio: true,
             plugins: {
                 legend: { display: false },
-                tooltip: {
-                    backgroundColor: 'rgba(30, 36, 51, 0.95)',
-                    borderColor: 'rgba(0, 255, 136, 0.5)',
-                    borderWidth: 1,
-                    titleColor: '#ffffff',
-                    bodyColor: '#a0aec0',
-                    padding: 12,
-                    callbacks: {
-                        label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR')
-                    }
-                }
+                tooltip: { callbacks: { label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR') } }
             }
         }
     });
 }
 
-// Gráfico de manutenções
 function criarGraficoManutencoes() {
     const ctx = document.getElementById('chartManutencoes');
-    
-    if (charts.manutencoes) {
-        charts.manutencoes.destroy();
-    }
+    if (charts.manutencoes) charts.manutencoes.destroy();
     
     const manutencoesOrdenadas = [...dadosGlobais.manutencao]
-        .filter(m => m.total_gasto > 0)
-        .sort((a, b) => b.total_gasto - a.total_gasto)
+        .filter(m => Number(m.total_gasto) > 0)
+        .sort((a, b) => Number(b.total_gasto) - Number(a.total_gasto))
         .slice(0, 10);
     
     charts.manutencoes = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: manutencoesOrdenadas.map(m => m.placa),
+            labels: manutencoesOrdenadas.map(m => m.placa || 'Sem Placa'),
             datasets: [{
                 label: 'Gasto Total',
-                data: manutencoesOrdenadas.map(m => m.total_gasto),
+                data: manutencoesOrdenadas.map(m => Number(m.total_gasto) || 0),
                 backgroundColor: 'rgba(255, 71, 87, 0.2)',
                 borderColor: 'rgba(255, 71, 87, 1)',
                 borderWidth: 2,
@@ -170,35 +145,23 @@ function criarGraficoManutencoes() {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: true,
+            responsive: true, maintainAspectRatio: true,
             plugins: {
                 legend: { display: false },
-                tooltip: {
-                    backgroundColor: 'rgba(30, 36, 51, 0.95)',
-                    borderColor: 'rgba(255, 71, 87, 0.5)',
-                    borderWidth: 1,
-                    padding: 12,
-                    callbacks: {
-                        label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR')
-                    }
-                }
+                tooltip: { callbacks: { label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR') } }
             }
         }
     });
 }
 
-// Gráfico de status
 function criarGraficoStatus() {
     const ctx = document.getElementById('chartStatus');
-    
-    if (charts.status) {
-        charts.status.destroy();
-    }
+    if (charts.status) charts.status.destroy();
     
     const statusCount = {};
     dadosGlobais.veiculos.forEach(v => {
-        statusCount[v.status] = (statusCount[v.status] || 0) + 1;
+        const status = v.status || 'Desconhecido';
+        statusCount[status] = (statusCount[status] || 0) + 1;
     });
     
     charts.status = new Chart(ctx, {
@@ -207,47 +170,23 @@ function criarGraficoStatus() {
             labels: Object.keys(statusCount),
             datasets: [{
                 data: Object.values(statusCount),
-                backgroundColor: [
-                    'rgba(0, 255, 136, 0.8)',
-                    'rgba(255, 71, 87, 0.8)',
-                    'rgba(255, 165, 2, 0.8)'
-                ],
-                borderColor: '#1e2433',
-                borderWidth: 3
+                backgroundColor: ['rgba(0, 255, 136, 0.8)', 'rgba(255, 71, 87, 0.8)', 'rgba(255, 165, 2, 0.8)', 'rgba(100, 100, 100, 0.8)'],
+                borderColor: '#1e2433', borderWidth: 3
             }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#a0aec0', padding: 15, font: { size: 12 } }
-                }
-            }
-        }
+        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0' } } } }
     });
 }
 
-// Gráfico de modelos
 function criarGraficoModelos() {
     const ctx = document.getElementById('chartModelos');
-    
-    if (charts.modelos) {
-        charts.modelos.destroy();
-    }
+    if (charts.modelos) charts.modelos.destroy();
     
     const modelosCount = {};
     dadosGlobais.veiculos.forEach(v => {
-        if (v.modelo) {
-            modelosCount[v.modelo] = (modelosCount[v.modelo] || 0) + 1;
-        }
+        const modelo = v.modelo || 'Outros';
+        modelosCount[modelo] = (modelosCount[modelo] || 0) + 1;
     });
-    
-    const cores = [
-        'rgba(0, 255, 136, 0.8)', 'rgba(52, 152, 219, 0.8)', 'rgba(155, 89, 182, 0.8)',
-        'rgba(241, 196, 15, 0.8)', 'rgba(231, 76, 60, 0.8)', 'rgba(26, 188, 156, 0.8)'
-    ];
     
     charts.modelos = new Chart(ctx, {
         type: 'pie',
@@ -255,28 +194,20 @@ function criarGraficoModelos() {
             labels: Object.keys(modelosCount),
             datasets: [{
                 data: Object.values(modelosCount),
-                backgroundColor: cores,
-                borderColor: '#1e2433',
-                borderWidth: 3
+                backgroundColor: ['rgba(0, 255, 136, 0.8)', 'rgba(52, 152, 219, 0.8)', 'rgba(155, 89, 182, 0.8)', 'rgba(241, 196, 15, 0.8)', 'rgba(231, 76, 60, 0.8)'],
+                borderColor: '#1e2433', borderWidth: 3
             }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10, font: { size: 11 } } }
-            }
-        }
+        options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0' } } } }
     });
 }
 
-// Gráfico de ROI
 function criarGraficoROI() {
     const ctx = document.getElementById('chartROI');
     if (charts.roi) charts.roi.destroy();
     
     const veiculosComROI = dadosGlobais.veiculos
-        .map(v => ({ placa: v.placa, roi: (v.aluguel_mensal * 12) }))
+        .map(v => ({ placa: v.placa || 'Sem Placa', roi: (Number(v.aluguel_mensal) || 0) * 12 }))
         .filter(v => v.roi > 0)
         .sort((a, b) => b.roi - a.roi).slice(0, 8);
     
@@ -289,18 +220,13 @@ function criarGraficoROI() {
                 data: veiculosComROI.map(v => v.roi),
                 backgroundColor: 'rgba(0, 255, 136, 0.2)',
                 borderColor: 'rgba(0, 255, 136, 1)',
-                borderWidth: 2,
-                borderRadius: 8
+                borderWidth: 2, borderRadius: 8
             }]
         },
-        options: {
-            responsive: true, maintainAspectRatio: true, indexAxis: 'y',
-            plugins: { legend: { display: false } }
-        }
+        options: { responsive: true, maintainAspectRatio: true, indexAxis: 'y', plugins: { legend: { display: false } } }
     });
 }
 
-// Navegação e Eventos
 function configurarEventos() {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', (e) => {
@@ -309,10 +235,7 @@ function configurarEventos() {
         });
     });
     
-    document.getElementById('menuToggle')?.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('active');
-    });
-    
+    document.getElementById('menuToggle')?.addEventListener('click', () => document.getElementById('sidebar').classList.toggle('active'));
     document.getElementById('btnUpload')?.addEventListener('click', abrirUploadModal);
     document.getElementById('btnMobileUpload')?.addEventListener('click', abrirUploadModal);
     document.getElementById('fileInput')?.addEventListener('change', processarArquivo);
@@ -348,13 +271,9 @@ function navegarPara(page) {
 function abrirUploadModal() { document.getElementById('uploadModal').classList.add('active'); }
 function closeUploadModal() { document.getElementById('uploadModal').classList.remove('active'); }
 
-// Processar arquivo
 async function processarArquivo(e) {
     const file = e.target.files[0];
-    if (!file || !file.name.endsWith('.xlsx')) {
-        alert('Por favor, selecione um arquivo .xlsx válido');
-        return;
-    }
+    if (!file || !file.name.endsWith('.xlsx')) return alert('Por favor, selecione um arquivo .xlsx válido');
     
     mostrarLoading(true);
     closeUploadModal();
@@ -373,34 +292,40 @@ async function processarArquivo(e) {
     }
 }
 
-// Extrair dados da planilha
+// Extrator INTELIGENTE - Não importa se o nome da coluna tem espaço, letra maiúscula ou acento!
 function extrairDadosPlanilha(workbook) {
-    const dados = {
-        resumo: {},
-        veiculos: [],
-        manutencao: [],
-        gastos: [],
-        receitas: [],
-        compras: []
-    };
+    const dados = { resumo: {}, veiculos: [], manutencao: [], gastos: [], receitas: [], compras: [] };
     
-    // Lê todas as abas do Excel e organiza os dados
-    workbook.SheetNames.forEach(name => {
-        const lowerName = name.toLowerCase();
-        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[name]);
-        
-        if (lowerName.includes('veiculo') || lowerName.includes('veículo')) dados.veiculos = sheetData;
-        else if (lowerName.includes('manutencao') || lowerName.includes('manutenção')) dados.manutencao = sheetData;
-        else if (lowerName.includes('gasto')) dados.gastos = sheetData;
-        else if (lowerName.includes('receita')) dados.receitas = sheetData;
-        else if (lowerName.includes('compra')) dados.compras = sheetData;
-        else if (lowerName.includes('resumo') && sheetData.length > 0) dados.resumo = sheetData[0];
+    const padronizarChaves = (arr) => arr.map(row => {
+        let newRow = {};
+        for (let key in row) {
+            // Transforma "Aluguel Mensal" em "aluguel_mensal", etc.
+            let cleanKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().replace(/\s+/g, '_');
+            newRow[cleanKey] = row[key];
+        }
+        return newRow;
     });
 
-    // Atualiza estatísticas baseadas nos veículos carregados
+    workbook.SheetNames.forEach(name => {
+        const lowerName = name.toLowerCase();
+        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[name], { defval: 0 });
+        
+        if (lowerName.includes('veiculo') || lowerName.includes('veículo')) dados.veiculos = padronizarChaves(sheetData);
+        else if (lowerName.includes('manutencao') || lowerName.includes('manutenção')) dados.manutencao = padronizarChaves(sheetData);
+        else if (lowerName.includes('gasto')) dados.gastos = padronizarChaves(sheetData);
+        else if (lowerName.includes('receita')) dados.receitas = padronizarChaves(sheetData);
+        else if (lowerName.includes('compra')) dados.compras = padronizarChaves(sheetData);
+    });
+
+    // Calcula os totais do Resumo FORÇADAMENTE (Ignora tab Resumo e soma na unha pra nunca dar NaN)
+    dados.resumo.receita_mensal = dados.veiculos.reduce((sum, v) => sum + (Number(v.aluguel_mensal) || 0), 0);
+    dados.resumo.total_manutencao = dados.manutencao.reduce((sum, m) => sum + (Number(m.total_gasto) || 0), 0);
+    dados.resumo.gastos_fixos_mensal = dados.gastos.reduce((sum, g) => sum + (Number(g.total_mensal) || 0), 0);
+    dados.resumo.lucro_mensal = dados.resumo.receita_mensal - dados.resumo.total_manutencao - dados.resumo.gastos_fixos_mensal;
     dados.resumo.total_veiculos = dados.veiculos.length;
-    dados.resumo.veiculos_ativos = dados.veiculos.filter(v => v.status === 'Ativo').length;
-    
+    dados.resumo.veiculos_ativos = dados.veiculos.filter(v => v.status && String(v.status).toLowerCase() === 'ativo').length;
+    dados.resumo.total_investido = dados.compras.reduce((sum, c) => sum + (Number(c.total) || 0), 0);
+
     return dados;
 }
 
@@ -411,7 +336,7 @@ function mostrarLoading(mostrar) {
 }
 
 function formatarMoeda(valor) {
-    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(valor) || 0);
 }
 
 document.addEventListener('DOMContentLoaded', carregarDados);
