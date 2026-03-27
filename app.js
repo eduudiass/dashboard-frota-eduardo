@@ -1,87 +1,32 @@
-// ===================== APP.JS FINAL COMPLETO (FUNCIONANDO 100%) =====================
+// ===================== APP FINAL FUNCIONANDO =====================
 
-// Dados globais
-let dadosGlobais = null;
+let dadosGlobais = {
+    resumo: {
+        total_veiculos: 0,
+        veiculos_ativos: 0,
+        receita_mensal: 0,
+        total_manutencao: 0,
+        gastos_fixos_mensal: 0,
+        lucro_mensal: 0
+    },
+    veiculos: [],
+    manutencao: [],
+    gastos: []
+};
+
 let charts = {};
 
-// ===================== SAFE SET =====================
+// ===================== SAFE =====================
 function setText(id, valor) {
     const el = document.getElementById(id);
     if (el) el.textContent = valor;
 }
 
-// ===================== CARREGAR JSON =====================
-async function carregarDados() {
-    mostrarLoading(true);
-    try {
-        const response = await fetch('dados.json?nocache=' + new Date().getTime());
-        dadosGlobais = await response.json();
-        inicializarDashboard();
-    } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-    } finally {
-        mostrarLoading(false);
-    }
-}
-
-// ===================== INICIALIZAR =====================
-function inicializarDashboard() {
-    if (!dadosGlobais) return;
-    atualizarResumo();
-    criarGraficos();
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
     configurarEventos();
-}
-
-// ===================== RESUMO =====================
-function atualizarResumo() {
-    const resumo = dadosGlobais.resumo || {};
-
-    setText('totalVeiculos', resumo.total_veiculos || 0);
-    setText('veiculosAtivos', resumo.veiculos_ativos || 0);
-
-    setText('kpiReceita', formatarMoeda(resumo.receita_mensal || 0));
-    setText('kpiManutencao', formatarMoeda(resumo.total_manutencao || 0));
-    setText('kpiGastos', formatarMoeda(resumo.gastos_fixos_mensal || 0));
-    setText('kpiLucro', formatarMoeda(resumo.lucro_mensal || 0));
-
-    const veiculos = dadosGlobais.veiculos || [];
-    const gastos = dadosGlobais.gastos || [];
-    const manutencao = dadosGlobais.manutencao || [];
-
-    const totalCombustivel = gastos.reduce((s, g) => s + (g.combustivel_mensal || 0), 0);
-    const totalServicos = manutencao.reduce((s, m) => s + (m.num_servicos || 0), 0);
-    const totalKM = veiculos.reduce((s, v) => s + (v.km_atual || 0), 0);
-
-    setText('statCombustivel', formatarMoeda(totalCombustivel));
-    setText('statServicos', totalServicos);
-    setText('statKM', totalKM.toLocaleString('pt-BR') + ' km');
-    setText('statInvestimento', formatarMoeda(resumo.total_investido || 0));
-}
-
-// ===================== GRÁFICOS =====================
-function criarGraficos() {
-    criarGraficoReceitas();
-}
-
-function criarGraficoReceitas() {
-    const ctx = document.getElementById('chartReceitas');
-    if (!ctx) return;
-
-    if (charts.receitas) charts.receitas.destroy();
-
-    const veiculos = dadosGlobais.veiculos || [];
-
-    charts.receitas = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: veiculos.map(v => v.placa || '---'),
-            datasets: [{
-                label: 'Receita',
-                data: veiculos.map(v => v.aluguel_mensal || 0)
-            }]
-        }
-    });
-}
+    atualizarTudo();
+});
 
 // ===================== EVENTOS =====================
 function configurarEventos() {
@@ -94,23 +39,18 @@ function configurarEventos() {
     });
 
     const fileInput = document.getElementById('fileInput');
-    if (fileInput) {
-        fileInput.onchange = processarArquivo;
-    }
+    if (fileInput) fileInput.onchange = processarArquivo;
 }
 
-// ===================== NAVEGAÇÃO =====================
+// ===================== NAV =====================
 function navegarPara(page) {
-
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-        if (item.dataset.page === page) item.classList.add('active');
-    });
-
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
     const target = document.getElementById(`page-${page}`);
     if (target) target.classList.add('active');
+
+    document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
 }
 
 // ===================== EXCEL =====================
@@ -118,31 +58,17 @@ async function processarArquivo(e) {
 
     const file = e.target.files[0];
 
-    if (!file || !file.name.endsWith('.xlsx')) {
-        alert('Selecione um Excel válido');
-        return;
-    }
+    if (!file) return;
 
-    mostrarLoading(true);
+    const data = await file.arrayBuffer();
+    const workbook = XLSX.read(data);
 
-    try {
-        const data = await file.arrayBuffer();
-        const workbook = XLSX.read(data);
+    dadosGlobais = extrairDadosPlanilha(workbook);
 
-        dadosGlobais = extrairDadosPlanilha(workbook);
-
-        inicializarDashboard();
-
-        alert('✅ Planilha carregada com sucesso');
-    } catch (error) {
-        console.error(error);
-        alert('Erro ao ler Excel');
-    } finally {
-        mostrarLoading(false);
-    }
+    atualizarTudo();
 }
 
-// ===================== EXTRAÇÃO COMPLETA =====================
+// ===================== EXTRAÇÃO REAL =====================
 function extrairDadosPlanilha(workbook) {
 
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -161,32 +87,58 @@ function extrairDadosPlanilha(workbook) {
         veiculos: json,
 
         manutencao: json.map(v => ({
-            placa: v.placa,
-            total_gasto: v.manutencao || Math.random() * 2000,
-            num_servicos: Math.floor(Math.random() * 5)
+            placa: v.placa || '---',
+            total_gasto: v.manutencao || 0,
+            num_servicos: 1
         })),
 
         gastos: json.map(v => ({
-            combustivel_mensal: v.combustivel || Math.random() * 1500
+            combustivel_mensal: v.combustivel || 0
         }))
     };
 }
 
-// ===================== UTIL =====================
-function mostrarLoading(mostrar) {
-    const overlay = document.getElementById('loadingOverlay');
-    if (!overlay) return;
-    overlay.classList.toggle('hidden', !mostrar);
+// ===================== ATUALIZAR TUDO =====================
+function atualizarTudo() {
+    atualizarResumo();
+    atualizarGrafico();
 }
 
+// ===================== RESUMO =====================
+function atualizarResumo() {
+
+    const r = dadosGlobais.resumo;
+
+    setText('totalVeiculos', r.total_veiculos);
+    setText('veiculosAtivos', r.veiculos_ativos);
+    setText('kpiReceita', formatarMoeda(r.receita_mensal));
+    setText('kpiLucro', formatarMoeda(r.lucro_mensal));
+}
+
+// ===================== GRÁFICO =====================
+function atualizarGrafico() {
+
+    const ctx = document.getElementById('chartReceitas');
+    if (!ctx) return;
+
+    if (charts.receitas) charts.receitas.destroy();
+
+    charts.receitas = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dadosGlobais.veiculos.map(v => v.placa || '---'),
+            datasets: [{
+                label: 'Receita',
+                data: dadosGlobais.veiculos.map(v => v.aluguel_mensal || 0)
+            }]
+        }
+    });
+}
+
+// ===================== UTIL =====================
 function formatarMoeda(valor) {
     return new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'
     }).format(valor);
 }
-
-// ===================== INIT =====================
-document.addEventListener('DOMContentLoaded', () => {
-    carregarDados();
-});
