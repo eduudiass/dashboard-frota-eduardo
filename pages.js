@@ -137,7 +137,6 @@ const Pages = {
     },
     
     abrirDetalhesVeiculo: function(veiculo) {
-        // Modal com detalhes completos do veículo
         const modal = document.createElement('div');
         modal.className = 'modal active';
         modal.id = 'modalDetalhes';
@@ -159,7 +158,6 @@ const Pages = {
                 </div>
                 <div class="modal-body">
                     <div class="detalhes-grid">
-                        <!-- Info básica -->
                         <div class="detalhe-section">
                             <h4>📋 Informações Básicas</h4>
                             <div class="info-list">
@@ -190,7 +188,6 @@ const Pages = {
                             </div>
                         </div>
                         
-                        <!-- Financeiro -->
                         <div class="detalhe-section">
                             <h4>💰 Financeiro</h4>
                             <div class="financial-cards">
@@ -209,7 +206,6 @@ const Pages = {
                             </div>
                         </div>
                         
-                        <!-- Manutenção -->
                         <div class="detalhe-section full-width">
                             <h4>🔧 Histórico de Manutenção</h4>
                             <div class="info-list">
@@ -235,8 +231,10 @@ const Pages = {
     renderCompras: function() {
         const container = document.getElementById('page-compras');
         
-        const totalInvestido = dadosGlobais.compras.reduce((sum, c) => sum + c.total, 0);
-        const numCarros = dadosGlobais.compras.length;
+        // Proteção: usa array vazio se não houver dados de compras
+        const comprasData = dadosGlobais.compras || [];
+        const totalInvestido = comprasData.reduce((sum, c) => sum + (c.total || 0), 0);
+        const numCarros = comprasData.length;
         
         const html = `
             <div class="page-header">
@@ -257,7 +255,12 @@ const Pages = {
             </div>
             
             <div class="compras-grid">
-                ${dadosGlobais.compras.map(carro => this.criarCardCompra(carro)).join('')}
+                ${comprasData.map(carro => {
+                    // Previne quebra caso falte título ou itens
+                    carro.titulo = carro.titulo || 'Carro sem título';
+                    carro.itens = carro.itens || [];
+                    return this.criarCardCompra(carro);
+                }).join('')}
             </div>
         `;
         
@@ -265,11 +268,9 @@ const Pages = {
     },
     
     criarCardCompra: function(carro) {
-        // Extrair placa do título
         const placaMatch = carro.titulo.match(/([A-Z]{3}\d{1}[A-Z0-9]{1}\d{2}|[A-Z]{3}\d{4})/);
         const placa = placaMatch ? placaMatch[0] : '';
         
-        // Agrupar gastos por categoria
         const categorias = {};
         carro.itens.forEach(item => {
             const cat = item.categoria || 'OUTROS';
@@ -289,12 +290,11 @@ const Pages = {
                         <span class="categoria-valor">${formatarMoeda(data.valor)}</span>
                     </div>
                     <div class="categoria-bar">
-                        <div class="categoria-fill" style="width: ${(data.valor / carro.total * 100).toFixed(1)}%"></div>
+                        <div class="categoria-fill" style="width: ${(carro.total > 0 ? (data.valor / carro.total * 100).toFixed(1) : 0)}%"></div>
                     </div>
                 </div>
             `).join('');
         
-        // Calcular ROI se possível
         const veiculoInfo = dadosGlobais.veiculos.find(v => v.placa === placa);
         const receitaAnual = veiculoInfo ? veiculoInfo.aluguel_mensal * 12 : 0;
         const roi = receitaAnual > 0 ? ((receitaAnual / carro.total - 1) * 100).toFixed(1) : 0;
@@ -311,7 +311,7 @@ const Pages = {
                 
                 <div class="compra-total">
                     <div class="total-label">Investimento Total</div>
-                    <div class="total-valor">${formatarMoeda(carro.total)}</div>
+                    <div class="total-valor">${formatarMoeda(carro.total || 0)}</div>
                 </div>
                 
                 <div class="compra-categorias">
@@ -370,14 +370,14 @@ const Pages = {
         modal.className = 'modal active';
         modal.id = 'modalCompraDetalhes';
         
-        const itensHtml = carro.itens
+        const itensHtml = (carro.itens || [])
             .sort((a, b) => new Date(a.data) - new Date(b.data))
             .map(item => `
                 <tr>
-                    <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
-                    <td>${this.getCategoriaIcon(item.categoria)} ${item.categoria}</td>
-                    <td>${item.descricao}</td>
-                    <td class="text-right">${formatarMoeda(item.valor)}</td>
+                    <td>${item.data ? new Date(item.data).toLocaleDateString('pt-BR') : '-'}</td>
+                    <td>${this.getCategoriaIcon(item.categoria)} ${item.categoria || 'Outros'}</td>
+                    <td>${item.descricao || '-'}</td>
+                    <td class="text-right">${formatarMoeda(item.valor || 0)}</td>
                     <td class="text-muted">${item.observacao || '-'}</td>
                 </tr>
             `).join('');
@@ -391,7 +391,7 @@ const Pages = {
                 <div class="modal-body">
                     <div class="compra-total-destaque">
                         <span>Total Investido:</span>
-                        <span>${formatarMoeda(carro.total)}</span>
+                        <span>${formatarMoeda(carro.total || 0)}</span>
                     </div>
                     
                     <h4 style="margin: 24px 0 16px 0;">📋 Detalhamento de Custos</h4>
@@ -421,8 +421,8 @@ const Pages = {
     // Página de Manutenções
     renderManutencoes: function() {
         const container = document.getElementById('page-manutencoes');
-        const totalGasto = dadosGlobais.manutencao.reduce((sum, m) => sum + m.total_gasto, 0);
-        const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + m.num_servicos, 0);
+        const totalGasto = dadosGlobais.manutencao.reduce((sum, m) => sum + (m.total_gasto || 0), 0);
+        const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + (m.num_servicos || 0), 0);
         
         const html = `
             <div class="page-header">
@@ -456,15 +456,15 @@ const Pages = {
                     </thead>
                     <tbody>
                         ${dadosGlobais.manutencao
-                            .sort((a, b) => b.total_gasto - a.total_gasto)
+                            .sort((a, b) => (b.total_gasto || 0) - (a.total_gasto || 0))
                             .map(m => `
                                 <tr>
-                                    <td><strong>${m.placa}</strong></td>
-                                    <td>${m.modelo}</td>
-                                    <td>${m.motorista}</td>
-                                    <td>${m.num_servicos}</td>
-                                    <td class="danger">${formatarMoeda(m.total_gasto)}</td>
-                                    <td>${formatarMoeda(m.num_servicos > 0 ? m.total_gasto / m.num_servicos : 0)}</td>
+                                    <td><strong>${m.placa || '-'}</strong></td>
+                                    <td>${m.modelo || '-'}</td>
+                                    <td>${m.motorista || '-'}</td>
+                                    <td>${m.num_servicos || 0}</td>
+                                    <td class="danger">${formatarMoeda(m.total_gasto || 0)}</td>
+                                    <td>${formatarMoeda(m.num_servicos > 0 ? (m.total_gasto / m.num_servicos) : 0)}</td>
                                 </tr>
                             `).join('')}
                     </tbody>
@@ -475,17 +475,29 @@ const Pages = {
         container.innerHTML = html;
     },
     
-    // Outras páginas (Receitas e Gastos) com estrutura similar...
+    // Outras páginas (Receitas e Gastos)
     renderReceitas: function() {
-        // Implementação similar às outras
         const container = document.getElementById('page-receitas');
-        container.innerHTML = '<h1>Em desenvolvimento...</h1>';
+        container.innerHTML = `
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">💰 Receitas</h1>
+                    <p class="page-subtitle">Página em desenvolvimento...</p>
+                </div>
+            </div>
+        `;
     },
     
     renderGastos: function() {
-        // Implementação similar às outras
         const container = document.getElementById('page-gastos');
-        container.innerHTML = '<h1>Em desenvolvimento...</h1>';
+        container.innerHTML = `
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">💸 Gastos</h1>
+                    <p class="page-subtitle">Página em desenvolvimento...</p>
+                </div>
+            </div>
+        `;
     }
 };
 
