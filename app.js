@@ -8,6 +8,27 @@ async function carregarDados() {
     try {
         const response = await fetch('dados.json');
         dadosGlobais = await response.json();
+        
+        // --- PROTEÇÃO CONTRA QUEBRA DE PÁGINAS ---
+        dadosGlobais.compras = dadosGlobais.compras || [];
+        dadosGlobais.receitas = dadosGlobais.receitas || [];
+        dadosGlobais.gastos = dadosGlobais.gastos || [];
+        dadosGlobais.veiculos = dadosGlobais.veiculos || [];
+        dadosGlobais.manutencao = dadosGlobais.manutencao || [];
+        
+        if (dadosGlobais.resumo) {
+            // Corrige nomes errados que vieram do JSON
+            dadosGlobais.resumo.gastos_fixos_mensal = dadosGlobais.resumo.gastos_fixos_mensal || dadosGlobais.resumo.gastos_fixos || 0;
+            dadosGlobais.resumo.total_investido = dadosGlobais.resumo.total_investido || dadosGlobais.resumo.investimento_total || 0;
+            dadosGlobais.resumo.total_veiculos = dadosGlobais.veiculos.length;
+            dadosGlobais.resumo.veiculos_ativos = dadosGlobais.veiculos.filter(v => v.status === 'Ativo').length;
+            
+            // Calcula o lucro real
+            if (typeof dadosGlobais.resumo.lucro_mensal === 'undefined') {
+                dadosGlobais.resumo.lucro_mensal = dadosGlobais.resumo.receita_mensal - dadosGlobais.resumo.total_manutencao - dadosGlobais.resumo.gastos_fixos_mensal;
+            }
+        }
+
         inicializarDashboard();
     } catch (error) {
         console.error('Erro ao carregar dados:', error);
@@ -56,9 +77,9 @@ function atualizarResumo() {
     }
     
     // Quick stats
-    const totalCombustivel = dadosGlobais.gastos.reduce((sum, g) => sum + g.combustivel_mensal, 0);
-    const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + m.num_servicos, 0);
-    const totalKM = dadosGlobais.veiculos.reduce((sum, v) => sum + v.km_atual, 0);
+    const totalCombustivel = dadosGlobais.gastos.reduce((sum, g) => sum + (g.combustivel_mensal || 0), 0);
+    const totalServicos = dadosGlobais.manutencao.reduce((sum, m) => sum + (m.num_servicos || 0), 0);
+    const totalKM = dadosGlobais.veiculos.reduce((sum, v) => sum + (v.km_atual || 0), 0);
     
     document.getElementById('statCombustivel').textContent = formatarMoeda(totalCombustivel);
     document.getElementById('statServicos').textContent = totalServicos;
@@ -117,23 +138,6 @@ function criarGraficoReceitas() {
                         label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR')
                     }
                 }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                        drawBorder: false
-                    },
-                    ticks: {
-                        color: '#718096',
-                        callback: (value) => 'R$ ' + value.toLocaleString('pt-BR')
-                    }
-                },
-                x: {
-                    grid: { display: false },
-                    ticks: { color: '#718096' }
-                }
             }
         }
     });
@@ -178,20 +182,6 @@ function criarGraficoManutencoes() {
                     callbacks: {
                         label: (context) => 'R$ ' + context.parsed.y.toLocaleString('pt-BR')
                     }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                    ticks: {
-                        color: '#718096',
-                        callback: (value) => 'R$ ' + value.toLocaleString('pt-BR')
-                    }
-                },
-                x: {
-                    grid: { display: false },
-                    ticks: { color: '#718096' }
                 }
             }
         }
@@ -255,14 +245,8 @@ function criarGraficoModelos() {
     });
     
     const cores = [
-        'rgba(0, 255, 136, 0.8)',
-        'rgba(52, 152, 219, 0.8)',
-        'rgba(155, 89, 182, 0.8)',
-        'rgba(241, 196, 15, 0.8)',
-        'rgba(231, 76, 60, 0.8)',
-        'rgba(26, 188, 156, 0.8)',
-        'rgba(230, 126, 34, 0.8)',
-        'rgba(149, 165, 166, 0.8)'
+        'rgba(0, 255, 136, 0.8)', 'rgba(52, 152, 219, 0.8)', 'rgba(155, 89, 182, 0.8)',
+        'rgba(241, 196, 15, 0.8)', 'rgba(231, 76, 60, 0.8)', 'rgba(26, 188, 156, 0.8)'
     ];
     
     charts.modelos = new Chart(ctx, {
@@ -280,10 +264,7 @@ function criarGraficoModelos() {
             responsive: true,
             maintainAspectRatio: true,
             plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#a0aec0', padding: 10, font: { size: 11 } }
-                }
+                legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10, font: { size: 11 } } }
             }
         }
     });
@@ -292,20 +273,12 @@ function criarGraficoModelos() {
 // Gráfico de ROI
 function criarGraficoROI() {
     const ctx = document.getElementById('chartROI');
+    if (charts.roi) charts.roi.destroy();
     
-    if (charts.roi) {
-        charts.roi.destroy();
-    }
-    
-    // Calcular ROI simplificado (aluguel anual vs custo)
     const veiculosComROI = dadosGlobais.veiculos
-        .map(v => ({
-            placa: v.placa,
-            roi: (v.aluguel_mensal * 12) // Simplificado para o exemplo
-        }))
+        .map(v => ({ placa: v.placa, roi: (v.aluguel_mensal * 12) }))
         .filter(v => v.roi > 0)
-        .sort((a, b) => b.roi - a.roi)
-        .slice(0, 8);
+        .sort((a, b) => b.roi - a.roi).slice(0, 8);
     
     charts.roi = new Chart(ctx, {
         type: 'bar',
@@ -321,73 +294,33 @@ function criarGraficoROI() {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            indexAxis: 'y',
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    backgroundColor: 'rgba(30, 36, 51, 0.95)',
-                    borderColor: 'rgba(0, 255, 136, 0.5)',
-                    borderWidth: 1,
-                    padding: 12,
-                    callbacks: {
-                        label: (context) => 'R$ ' + context.parsed.x.toLocaleString('pt-BR')
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                    ticks: {
-                        color: '#718096',
-                        callback: (value) => 'R$ ' + (value / 1000).toFixed(0) + 'k'
-                    }
-                },
-                y: {
-                    grid: { display: false },
-                    ticks: { color: '#718096' }
-                }
-            }
+            responsive: true, maintainAspectRatio: true, indexAxis: 'y',
+            plugins: { legend: { display: false } }
         }
     });
 }
 
-// Navegação
+// Navegação e Eventos
 function configurarEventos() {
-    // Menu navigation
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            const page = item.dataset.page;
-            navegarPara(page);
+            navegarPara(item.dataset.page);
         });
     });
     
-    // Mobile menu toggle
     document.getElementById('menuToggle')?.addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('active');
     });
     
-    // Upload buttons
     document.getElementById('btnUpload')?.addEventListener('click', abrirUploadModal);
     document.getElementById('btnMobileUpload')?.addEventListener('click', abrirUploadModal);
-    
-    // File input
     document.getElementById('fileInput')?.addEventListener('change', processarArquivo);
     
-    // Upload zone drag & drop
     const uploadZone = document.getElementById('uploadZone');
     if (uploadZone) {
-        uploadZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadZone.style.borderColor = 'var(--green-primary)';
-        });
-        
-        uploadZone.addEventListener('dragleave', () => {
-            uploadZone.style.borderColor = 'var(--border-color)';
-        });
-        
+        uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.style.borderColor = 'var(--green-primary)'; });
+        uploadZone.addEventListener('dragleave', () => { uploadZone.style.borderColor = 'var(--border-color)'; });
         uploadZone.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadZone.style.borderColor = 'var(--border-color)';
@@ -396,45 +329,24 @@ function configurarEventos() {
                 processarArquivo({ target: { files: e.dataTransfer.files } });
             }
         });
-        
-        uploadZone.addEventListener('click', () => {
-            document.getElementById('fileInput').click();
-        });
+        uploadZone.addEventListener('click', () => { document.getElementById('fileInput').click(); });
     }
 }
 
-// Navegação entre páginas
 function navegarPara(page) {
-    // Atualizar menu
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
-        if (item.dataset.page === page) {
-            item.classList.add('active');
-        }
+        if (item.dataset.page === page) item.classList.add('active');
     });
     
-    // Atualizar páginas
-    document.querySelectorAll('.page').forEach(p => {
-        p.classList.remove('active');
-    });
-    
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(`page-${page}`)?.classList.add('active');
-    
-    // Fechar menu mobile
     document.getElementById('sidebar')?.classList.remove('active');
-    
-    // Carregar conteúdo da página se necessário
     carregarPagina(page);
 }
 
-// Modal de upload
-function abrirUploadModal() {
-    document.getElementById('uploadModal').classList.add('active');
-}
-
-function closeUploadModal() {
-    document.getElementById('uploadModal').classList.remove('active');
-}
+function abrirUploadModal() { document.getElementById('uploadModal').classList.add('active'); }
+function closeUploadModal() { document.getElementById('uploadModal').classList.remove('active'); }
 
 // Processar arquivo
 async function processarArquivo(e) {
@@ -450,13 +362,8 @@ async function processarArquivo(e) {
     try {
         const data = await file.arrayBuffer();
         const workbook = XLSX.read(data);
-        
-        // Extrair dados (lógica similar ao Python)
         dadosGlobais = extrairDadosPlanilha(workbook);
-        
-        // Atualizar dashboard
         inicializarDashboard();
-        
         alert('✅ Planilha atualizada com sucesso!');
     } catch (error) {
         console.error('Erro ao processar arquivo:', error);
@@ -468,7 +375,6 @@ async function processarArquivo(e) {
 
 // Extrair dados da planilha
 function extrairDadosPlanilha(workbook) {
-    // Implementação simplificada - você pode expandir conforme necessário
     const dados = {
         resumo: {},
         veiculos: [],
@@ -478,27 +384,34 @@ function extrairDadosPlanilha(workbook) {
         compras: []
     };
     
-    // TODO: Implementar extração completa
+    // Lê todas as abas do Excel e organiza os dados
+    workbook.SheetNames.forEach(name => {
+        const lowerName = name.toLowerCase();
+        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[name]);
+        
+        if (lowerName.includes('veiculo') || lowerName.includes('veículo')) dados.veiculos = sheetData;
+        else if (lowerName.includes('manutencao') || lowerName.includes('manutenção')) dados.manutencao = sheetData;
+        else if (lowerName.includes('gasto')) dados.gastos = sheetData;
+        else if (lowerName.includes('receita')) dados.receitas = sheetData;
+        else if (lowerName.includes('compra')) dados.compras = sheetData;
+        else if (lowerName.includes('resumo') && sheetData.length > 0) dados.resumo = sheetData[0];
+    });
+
+    // Atualiza estatísticas baseadas nos veículos carregados
+    dados.resumo.total_veiculos = dados.veiculos.length;
+    dados.resumo.veiculos_ativos = dados.veiculos.filter(v => v.status === 'Ativo').length;
+    
     return dados;
 }
 
-// Loading
 function mostrarLoading(mostrar) {
     const overlay = document.getElementById('loadingOverlay');
-    if (mostrar) {
-        overlay.classList.remove('hidden');
-    } else {
-        overlay.classList.add('hidden');
-    }
+    if (mostrar) overlay.classList.remove('hidden');
+    else overlay.classList.add('hidden');
 }
 
-// Formatação
 function formatarMoeda(valor) {
-    return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    }).format(valor);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 }
 
-// Inicializar quando carregar
 document.addEventListener('DOMContentLoaded', carregarDados);
