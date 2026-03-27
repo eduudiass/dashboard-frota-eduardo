@@ -1,0 +1,338 @@
+{
+  "veiculos": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "ano": 2018,
+      "cor": "BRANCO",
+      "motorista": "Vinicius",
+      "contato": "51 991631858",
+      "aluguel_mensal": 2400.0,
+      "km_atual": 299382,
+      "status": "Ativo"
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "ano": 2020,
+      "cor": "PRETO",
+      "motorista": "Ricardo",
+      "contato": "51 980243095",
+      "aluguel_mensal": 3400.0,
+      "km_atual": 103446,
+      "status": "Ativo"
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "ano": 2020,
+      "cor": "BRANCO",
+      "motorista": "Alexandre",
+      "contato": "51 999658821",
+      "aluguel_mensal": 2800.0,
+      "km_atual": 88586,
+      "status": "Ativo"
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "ano": 2023,
+      "cor": "CINZA",
+      "motorista": "Rodrigo",
+      "contato": "51 992447962",
+      "aluguel_mensal": 4000.0,
+      "km_atual": 91790,
+      "status": "Ativo"
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "CINZA",
+      "motorista": "Matheus",
+      "contato": "51 996566187",
+      "aluguel_mensal": 4000.0,
+      "km_atual": 43763,
+      "status": "Ativo"
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Adriano",
+      "contato": "51 994680016",
+      "aluguel_mensal": 4000.0,
+      "km_atual": 45792,
+      "status": "Ativo"
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Dudu",
+      "contato": "51985228611",
+      "aluguel_mensal": 4000.0,
+      "km_atual": 28966,
+      "status": "Ativo"
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Willian",
+      "contato": "48 999642951",
+      "aluguel_mensal": 12000.0,
+      "km_atual": 62965,
+      "status": "Ativo"
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "ano": 2016,
+      "cor": "BRANCO",
+      "motorista": "João",
+      "contato": "51 994561225",
+      "aluguel_mensal": 2800.0,
+      "km_atual": 290728,
+      "status": "Ativo"
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "ano": 2019,
+      "cor": "BRANCO",
+      "motorista": "Mano",
+      "contato": "51 985593578",
+      "aluguel_mensal": 2400.0,
+      "km_atual": 185895,
+      "status": "Ativo"
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "ano": 2019,
+      "cor": "PRATA",
+      "motorista": "Henrique",
+      "contato": "51 992458597",
+      "aluguel_mensal": 2800.0,
+      "km_atual": 200914,
+      "status": "Ativo"
+    },
+    {
+      "numero": 12,
+      "placa": "QXT7G73",
+      "modelo": "FORD KA",
+      "ano": 2020,
+      "cor": "BRANCO",
+      "motorista": "Sem motorista",
+      "contato": "Sem motorista",
+      "aluguel_mensal": 2800.0,
+      "km_atual": 181701,
+      "status": "Ativo"
+    }
+  ],
+  "manutencao": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "motorista": "Vinicius",
+      "num_servicos": 1,
+      "total_gasto": 2510.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "motorista": "Ricardo",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Rodrigo",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Matheus",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "motorista": "Adriano",
+      "num_servicos": 1,
+      "total_gasto": 30.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "motorista": "Dudu",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "motorista": "Willian",
+      "num_servicos": 1,
+      "total_gasto": 50.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "motorista": "João",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "motorista": "Mano",
+      "num_servicos": 2,
+      "total_gasto": 1290.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "motorista": "Henrique",
+      "num_servicos": 2,
+      "total_gasto": 2130.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 12,
+      "placa": "QXT7G73",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    }
+  ],
+  "gastos": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "total_mensal": 384.1675
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "total_mensal": 388.25916666666666
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "total_mensal": 1006.7716666666668
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "total_mensal": 800.0
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 12,
+      "placa": "QXT7G73",
+      "modelo": "FORD KA",
+      "total_mensal": 0.0
+    }
+  ],
+  "resumo": {
+    "receita_mensal": 47400.0,
+    "total_manutencao": 6010.0,
+    "gastos_fixos": 2579.1983333333337,
+    "investimento_total": 34540.46
+  }
+}
