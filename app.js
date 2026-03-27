@@ -1,10 +1,16 @@
-// ===================== APP.JS FINAL FUNCIONAL =====================
+// ===================== APP.JS FINAL COMPLETO =====================
 
 // Dados globais
 let dadosGlobais = null;
 let charts = {};
 
-// ===================== CARREGAR JSON (COM CACHE FIX) =====================
+// ===================== SAFE SET =====================
+function setText(id, valor) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = valor;
+}
+
+// ===================== CARREGAR JSON =====================
 async function carregarDados() {
     mostrarLoading(true);
     try {
@@ -20,6 +26,7 @@ async function carregarDados() {
 
 // ===================== INICIALIZAR =====================
 function inicializarDashboard() {
+    if (!dadosGlobais) return;
     atualizarResumo();
     criarGraficos();
     configurarEventos();
@@ -27,43 +34,28 @@ function inicializarDashboard() {
 
 // ===================== RESUMO =====================
 function atualizarResumo() {
-    const { resumo } = dadosGlobais;
+    const resumo = dadosGlobais.resumo || {};
 
-    document.getElementById('totalVeiculos').textContent = resumo.total_veiculos || 0;
-    document.getElementById('veiculosAtivos').textContent = resumo.veiculos_ativos || 0;
+    setText('totalVeiculos', resumo.total_veiculos || 0);
+    setText('veiculosAtivos', resumo.veiculos_ativos || 0);
 
-    document.getElementById('kpiReceita').textContent = formatarMoeda(resumo.receita_mensal || 0);
-    document.getElementById('kpiManutencao').textContent = formatarMoeda(resumo.total_manutencao || 0);
-    document.getElementById('kpiGastos').textContent = formatarMoeda(resumo.gastos_fixos_mensal || 0);
+    setText('kpiReceita', formatarMoeda(resumo.receita_mensal || 0));
+    setText('kpiManutencao', formatarMoeda(resumo.total_manutencao || 0));
+    setText('kpiGastos', formatarMoeda(resumo.gastos_fixos_mensal || 0));
+    setText('kpiLucro', formatarMoeda(resumo.lucro_mensal || 0));
 
-    const lucro = resumo.lucro_mensal || 0;
+    const veiculos = dadosGlobais.veiculos || [];
+    const gastos = dadosGlobais.gastos || [];
+    const manutencao = dadosGlobais.manutencao || [];
 
-    const lucroEl = document.getElementById('kpiLucro');
-    const lucroIcon = document.getElementById('lucroIcon');
-    const lucroChange = document.getElementById('lucroChange');
+    const totalCombustivel = gastos.reduce((s, g) => s + (g.combustivel_mensal || 0), 0);
+    const totalServicos = manutencao.reduce((s, m) => s + (m.num_servicos || 0), 0);
+    const totalKM = veiculos.reduce((s, v) => s + (v.km_atual || 0), 0);
 
-    lucroEl.textContent = formatarMoeda(lucro);
-
-    if (lucro > 0) {
-        lucroIcon.className = 'kpi-icon success';
-        lucroIcon.textContent = '📈';
-        lucroChange.className = 'kpi-change positive';
-        lucroChange.textContent = 'Positivo';
-    } else {
-        lucroIcon.className = 'kpi-icon danger';
-        lucroIcon.textContent = '📉';
-        lucroChange.className = 'kpi-change negative';
-        lucroChange.textContent = 'Negativo';
-    }
-
-    const totalCombustivel = (dadosGlobais.gastos || []).reduce((s, g) => s + (g.combustivel_mensal || 0), 0);
-    const totalServicos = (dadosGlobais.manutencao || []).reduce((s, m) => s + (m.num_servicos || 0), 0);
-    const totalKM = (dadosGlobais.veiculos || []).reduce((s, v) => s + (v.km_atual || 0), 0);
-
-    document.getElementById('statCombustivel').textContent = formatarMoeda(totalCombustivel);
-    document.getElementById('statServicos').textContent = totalServicos;
-    document.getElementById('statKM').textContent = totalKM.toLocaleString('pt-BR') + ' km';
-    document.getElementById('statInvestimento').textContent = formatarMoeda(resumo.total_investido || 0);
+    setText('statCombustivel', formatarMoeda(totalCombustivel));
+    setText('statServicos', totalServicos);
+    setText('statKM', totalKM.toLocaleString('pt-BR') + ' km');
+    setText('statInvestimento', formatarMoeda(resumo.total_investido || 0));
 }
 
 // ===================== GRÁFICOS =====================
@@ -73,18 +65,19 @@ function criarGraficos() {
 
 function criarGraficoReceitas() {
     const ctx = document.getElementById('chartReceitas');
-
     if (!ctx) return;
 
     if (charts.receitas) charts.receitas.destroy();
 
+    const veiculos = dadosGlobais.veiculos || [];
+
     charts.receitas = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: (dadosGlobais.veiculos || []).map(v => v.placa),
+            labels: veiculos.map(v => v.placa || '---'),
             datasets: [{
                 label: 'Receita',
-                data: (dadosGlobais.veiculos || []).map(v => v.aluguel_mensal || 0)
+                data: veiculos.map(v => v.aluguel_mensal || 0)
             }]
         }
     });
@@ -94,14 +87,16 @@ function criarGraficoReceitas() {
 function configurarEventos() {
 
     document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', (e) => {
+        item.onclick = (e) => {
             e.preventDefault();
-            const page = item.dataset.page;
-            navegarPara(page);
-        });
+            navegarPara(item.dataset.page);
+        };
     });
 
-    document.getElementById('fileInput')?.addEventListener('change', processarArquivo);
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput) {
+        fileInput.onchange = processarArquivo;
+    }
 }
 
 // ===================== NAVEGAÇÃO =====================
@@ -118,7 +113,7 @@ function navegarPara(page) {
     if (target) target.classList.add('active');
 }
 
-// ===================== EXCEL FUNCIONANDO =====================
+// ===================== EXCEL =====================
 async function processarArquivo(e) {
 
     const file = e.target.files[0];
@@ -138,7 +133,7 @@ async function processarArquivo(e) {
 
         inicializarDashboard();
 
-        alert('✅ Planilha carregada');
+        alert('✅ Planilha carregada com sucesso');
     } catch (error) {
         console.error(error);
         alert('Erro ao ler Excel');
@@ -147,7 +142,7 @@ async function processarArquivo(e) {
     }
 }
 
-// ===================== EXTRAÇÃO REAL =====================
+// ===================== EXTRAÇÃO =====================
 function extrairDadosPlanilha(workbook) {
 
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
