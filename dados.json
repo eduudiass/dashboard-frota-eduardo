@@ -152,7 +152,7 @@
       "motorista": "Alexandre",
       "contato": "",
       "aluguel_mensal": 2800.0,
-      "data_inicio": "46054",
+      "data_inicio": "01/02/2026",
       "km_atual": 92779.0,
       "status": "Ativo"
     }
@@ -255,6 +255,15 @@
       "motorista": "Henrique",
       "num_servicos": 2,
       "total_gasto": 2130.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
       "status": "Ativo"
     },
     {
@@ -766,6 +775,17 @@
       "total_mensal": 0.0
     },
     {
+      "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
       "numero": 13,
       "placa": "EWU4C67",
       "modelo": "FORD KA",
@@ -779,7 +799,7 @@
   ],
   "compras": [
     {
-      "titulo": "🚗  JAH9H52  —  FORD KA 2019",
+      "titulo": "🚗  EWU4C67  —  FORD KA 2019",
       "itens": [
         {
           "numero": 1,
