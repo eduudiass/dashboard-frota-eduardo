@@ -272,4 +272,8 @@ with open(OUTPUT, 'w', encoding='utf-8') as f:
 
 print(f"\n✅ dados.json atualizado!")
 print(f"   Salvo em: {OUTPUT}")
+<<<<<<< HEAD
 input("\nPressione Enter para sair...")
+=======
+input("\nPressione Enter para sair...")
+>>>>>>> cd98d589a61856d76c408dee23342a8b55c4d0d0
