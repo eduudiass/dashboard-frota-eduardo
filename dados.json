@@ -1,0 +1,421 @@
+{
+  "veiculos": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "ano": 2018,
+      "cor": "BRANCO",
+      "motorista": "Vinicius",
+      "contato": "51 991631858",
+      "aluguel_mensal": 2400.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 299382.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "ano": 2020,
+      "cor": "PRETO",
+      "motorista": "Ricardo",
+      "contato": "51 980243095",
+      "aluguel_mensal": 3400.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 103446.6,
+      "status": "Ativo"
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "ano": 2020,
+      "cor": "BRANCO",
+      "motorista": "Sem motorista",
+      "contato": "",
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 88586.5,
+      "status": "Inativo"
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "ano": 2023,
+      "cor": "CINZA",
+      "motorista": "Rodrigo",
+      "contato": "51 992447962",
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 91790.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "CINZA",
+      "motorista": "Matheus",
+      "contato": "51 996566187",
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 43763.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Adriano",
+      "contato": "51 994680016",
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 45792.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Dudu",
+      "contato": "51985228611",
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 28966.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "ano": 2024,
+      "cor": "BRANCO",
+      "motorista": "Willian",
+      "contato": "48 999642951",
+      "aluguel_mensal": 12000.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 62965.9,
+      "status": "Ativo"
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "ano": 2016,
+      "cor": "BRANCO",
+      "motorista": "Sem motorista",
+      "contato": "",
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 290728.5,
+      "status": "Inativo"
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "ano": 2019,
+      "cor": "BRANCO",
+      "motorista": "Mano",
+      "contato": "51 985593578",
+      "aluguel_mensal": 2400.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 185895.2,
+      "status": "Ativo"
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "ano": 2019,
+      "cor": "PRATA",
+      "motorista": "Henrique",
+      "contato": "51 992458597",
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "01/01/2026",
+      "km_atual": 200914.7,
+      "status": "Ativo"
+    },
+    {
+      "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "ano": 2020,
+      "cor": "PRETO",
+      "motorista": "Alexandre",
+      "contato": "",
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "01/02/2026",
+      "km_atual": 92779.0,
+      "status": "Ativo"
+    }
+  ],
+  "manutencao_resumo": [
+    {
+      "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    }
+  ],
+  "manutencao_registros": [
+    {
+      "numero": 12,
+      "data": "EWU4C67",
+      "placa": "FORD KA",
+      "modelo": "Alexandre",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 1,
+      "data": "01/03/2026",
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "tipo": "GERAL",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 2510.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 2,
+      "data": "13/03/2026",
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "tipo": "OLEO",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 30.0,
+      "km_servico": "??",
+      "prox_revisao": "10000"
+    },
+    {
+      "numero": 3,
+      "data": "13/03/2026",
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "tipo": "DISCO",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 580.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 4,
+      "data": "12/03/2026",
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "tipo": "OLEO",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 30.0,
+      "km_servico": "??",
+      "prox_revisao": "10000"
+    },
+    {
+      "numero": 5,
+      "data": "07/03/2026",
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "tipo": "PNEU",
+      "descricao": "BORRACHARIA",
+      "oficina": "THIAGO",
+      "custo": 50.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 6,
+      "data": "20/03/2026",
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "tipo": "VELA",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 710.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 7,
+      "data": "20/03/2026",
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "tipo": "GERAL",
+      "descricao": "OFICINA",
+      "oficina": "GIBA",
+      "custo": 2100.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 8,
+      "data": "28/03/2026",
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "tipo": "CHAPEAÇÃO",
+      "descricao": "CHAPEADOR",
+      "oficina": "RAFAEL",
+      "custo": 500.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    }
+  ],
+  "receitas": [],
+  "gastos": [
+    {
+      "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    }
+  ],
+  "compras": [
+    {
+      "titulo": "🚗  JAH9H52  —  FORD KA 2019",
+      "itens": [
+        {
+          "numero": 1,
+          "data": "23/02/2026",
+          "categoria": "COMPRA",
+          "descricao": "COMPRA FORD KA 2019",
+          "valor": 15000.0,
+          "observacao": ""
+        },
+        {
+          "numero": 2,
+          "data": "23/02/2026",
+          "categoria": "COMISSÃO",
+          "descricao": "COMISSÃO",
+          "valor": 1000.0,
+          "observacao": "para ninho"
+        },
+        {
+          "numero": 3,
+          "data": "23/02/2026",
+          "categoria": "GUINCHO",
+          "descricao": "GUINCHO",
+          "valor": 180.0,
+          "observacao": "levar para casa"
+        },
+        {
+          "numero": 4,
+          "data": "24/02/2026",
+          "categoria": "CERTIDÃO",
+          "descricao": "CERTIDÃO",
+          "valor": 96.0,
+          "observacao": "histórico"
+        },
+        {
+          "numero": 5,
+          "data": "25/02/2026",
+          "categoria": "GUINCHO",
+          "descricao": "GUINCHO",
+          "valor": 158.0,
+          "observacao": "para oficina"
+        },
+        {
+          "numero": 6,
+          "data": "27/02/2026",
+          "categoria": "MECÂNICO",
+          "descricao": "MECÂNICO",
+          "valor": 3000.0,
+          "observacao": "carro pronto"
+        },
+        {
+          "numero": 7,
+          "data": "04/03/2026",
+          "categoria": "IPVA",
+          "descricao": "IPVA",
+          "valor": 2510.0,
+          "observacao": ""
+        },
+        {
+          "numero": 8,
+          "data": "04/03/2026",
+          "categoria": "TRANSFERÊNCIA",
+          "descricao": "TRANSFERÊNCIA",
+          "valor": 1130.0,
+          "observacao": ""
+        },
+        {
+          "numero": 9,
+          "data": "04/03/2026",
+          "categoria": "PLACA",
+          "descricao": "PLACA",
+          "valor": 300.0,
+          "observacao": ""
+        },
+        {
+          "numero": 10,
+          "data": "04/03/2026",
+          "categoria": "PEÇAS",
+          "descricao": "PACOTE PEÇAS",
+          "valor": 1000.0,
+          "observacao": ""
+        },
+        {
+          "numero": 11,
+          "data": "12/03/2026",
+          "categoria": "DESPACHANTE",
+          "descricao": "DESPACHANTE",
+          "valor": 366.23,
+          "observacao": ""
+        },
+        {
+          "numero": 12,
+          "data": "09/03/2026",
+          "categoria": "PNEU",
+          "descricao": "BORRACHARIA",
+          "valor": 30.0,
+          "observacao": ""
+        }
+      ],
+      "total": 0.0
+    }
+  ],
+  "vendas_resumo": {
+    "carros_vendidos": 0,
+    "total_investido": 0.0,
+    "total_arrecadado": 0.0,
+    "lucro_total": 0.0,
+    "lucro_medio": 0.0
+  },
+  "vendas_registros": [],
+  "resumo": {
+    "receita_mensal": 47400.0,
+    "total_manutencao": 0.0,
+    "num_servicos": 0,
+    "gastos_fixos_mensal": 0.0,
+    "total_investido_compras": 0.0,
+    "total_veiculos": 12,
+    "veiculos_ativos": 10,
+    "veiculos_inativos": 2,
+    "total_combustivel_mes": 0.0,
+    "total_km": 1535009.4000000001,
+    "media_por_carro": 3950.0,
+    "lucro_mensal": 47400.0
+  }
+}
