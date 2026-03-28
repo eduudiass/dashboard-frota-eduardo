@@ -159,7 +159,106 @@
   ],
   "manutencao_resumo": [
     {
-      "numero": 12,
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "motorista": "Vinicius",
+      "num_servicos": 2,
+      "total_gasto": 3010.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "motorista": "Ricardo",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Rodrigo",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Matheus",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "motorista": "Adriano",
+      "num_servicos": 1,
+      "total_gasto": 30.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "motorista": "Dudu",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "motorista": "Willian",
+      "num_servicos": 1,
+      "total_gasto": 50.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "motorista": "Sem motorista",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "motorista": "Mano",
+      "num_servicos": 2,
+      "total_gasto": 1290.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "motorista": "Henrique",
+      "num_servicos": 2,
+      "total_gasto": 2130.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 13,
       "placa": "EWU4C67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
@@ -170,7 +269,139 @@
   ],
   "manutencao_registros": [
     {
-      "numero": 12,
+      "numero": 1,
+      "data": "IYR9I16",
+      "placa": "VW GOL",
+      "modelo": "Vinicius",
+      "tipo": "2",
+      "descricao": "3010",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 2,
+      "data": "JAB7G92",
+      "placa": "VW VIRTUS",
+      "modelo": "Ricardo",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 3,
+      "data": "JAH9H52",
+      "placa": "FORD KA",
+      "modelo": "",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 4,
+      "data": "JCL0J97",
+      "placa": "VW VIRTUS",
+      "modelo": "Rodrigo",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 5,
+      "data": "JCN6C97",
+      "placa": "VW VIRTUS",
+      "modelo": "Matheus",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 6,
+      "data": "JCN6D02",
+      "placa": "VW VIRTUS",
+      "modelo": "Adriano",
+      "tipo": "1",
+      "descricao": "30",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 7,
+      "data": "JCN6D06",
+      "placa": "VW VIRTUS",
+      "modelo": "Dudu",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 8,
+      "data": "JDL3C31",
+      "placa": "BYD",
+      "modelo": "Willian",
+      "tipo": "1",
+      "descricao": "50",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 9,
+      "data": "QIF3C51",
+      "placa": "RENAULT SANDERO",
+      "modelo": "",
+      "tipo": "",
+      "descricao": "",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 10,
+      "data": "QUG1G30",
+      "placa": "FORD KA",
+      "modelo": "Mano",
+      "tipo": "2",
+      "descricao": "1290",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 11,
+      "data": "QUT3E92",
+      "placa": "VW VOYAGE",
+      "modelo": "Henrique",
+      "tipo": "2",
+      "descricao": "2130",
+      "oficina": "",
+      "custo": 0.0,
+      "km_servico": "",
+      "prox_revisao": "Ativo"
+    },
+    {
+      "numero": 13,
       "data": "EWU4C67",
       "placa": "FORD KA",
       "modelo": "Alexandre",
@@ -278,10 +509,408 @@
       "prox_revisao": "??"
     }
   ],
-  "receitas": [],
-  "gastos": [
+  "receitas": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "motorista": "Vinicius",
+      "aluguel_previsto": 2400.0,
+      "receitas_mensais": {
+        "jan": 2400.0,
+        "fev": 2400.0,
+        "mar": 2400.0,
+        "abr": 2400.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 9600.0,
+      "pct_recebido": 0.3333333333333333
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "motorista": "Ricardo",
+      "aluguel_previsto": 3400.0,
+      "receitas_mensais": {
+        "jan": 3400.0,
+        "fev": 3400.0,
+        "mar": 3400.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 10200.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "aluguel_previsto": 2800.0,
+      "receitas_mensais": {
+        "jan": 2800.0,
+        "fev": 2800.0,
+        "mar": 0.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 5600.0,
+      "pct_recebido": 0.16666666666666666
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Rodrigo",
+      "aluguel_previsto": 4000.0,
+      "receitas_mensais": {
+        "jan": 4000.0,
+        "fev": 4000.0,
+        "mar": 4000.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 12000.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Matheus",
+      "aluguel_previsto": 4000.0,
+      "receitas_mensais": {
+        "jan": 4000.0,
+        "fev": 4000.0,
+        "mar": 4000.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 12000.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "motorista": "Adriano",
+      "aluguel_previsto": 4000.0,
+      "receitas_mensais": {
+        "jan": 4000.0,
+        "fev": 4000.0,
+        "mar": 4000.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 12000.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "motorista": "Dudu",
+      "aluguel_previsto": 4000.0,
+      "receitas_mensais": {
+        "jan": 0.0,
+        "fev": 0.0,
+        "mar": 4000.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 4000.0,
+      "pct_recebido": 0.08333333333333333
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "motorista": "Willian",
+      "aluguel_previsto": 12000.0,
+      "receitas_mensais": {
+        "jan": 12000.0,
+        "fev": 12000.0,
+        "mar": 12000.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 36000.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "motorista": "Sem motorista",
+      "aluguel_previsto": 2800.0,
+      "receitas_mensais": {
+        "jan": 2800.0,
+        "fev": 0.0,
+        "mar": 0.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 2800.0,
+      "pct_recebido": 0.08333333333333333
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "motorista": "Mano",
+      "aluguel_previsto": 2400.0,
+      "receitas_mensais": {
+        "jan": 2400.0,
+        "fev": 2400.0,
+        "mar": 2400.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 7200.0,
+      "pct_recebido": 0.25
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "motorista": "Henrique",
+      "aluguel_previsto": 2800.0,
+      "receitas_mensais": {
+        "jan": 2800.0,
+        "fev": 2800.0,
+        "mar": 2800.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 8400.0,
+      "pct_recebido": 0.25
+    },
     {
       "numero": 12,
+      "placa": "EWU4C67",
+      "modelo": "FORD KA",
+      "motorista": "Alexandre",
+      "aluguel_previsto": 2800.0,
+      "receitas_mensais": {
+        "jan": 0.0,
+        "fev": 0.0,
+        "mar": 2800.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 2800.0,
+      "pct_recebido": 0.0
+    }
+  ],
+  "gastos": [
+    {
+      "numero": 1,
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "motorista": "Vinicius",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 2,
+      "placa": "JAB7G92",
+      "modelo": "VW VIRTUS",
+      "motorista": "Ricardo",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 3,
+      "placa": "JAH9H52",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 4,
+      "placa": "JCL0J97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Rodrigo",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 5,
+      "placa": "JCN6C97",
+      "modelo": "VW VIRTUS",
+      "motorista": "Matheus",
+      "seguro_anual": 4610.01,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 384.1675
+    },
+    {
+      "numero": 6,
+      "placa": "JCN6D02",
+      "modelo": "VW VIRTUS",
+      "motorista": "Adriano",
+      "seguro_anual": 4659.11,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 388.25916666666666
+    },
+    {
+      "numero": 7,
+      "placa": "JCN6D06",
+      "modelo": "VW VIRTUS",
+      "motorista": "Dudu",
+      "seguro_anual": 4881.26,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 600.0,
+      "total_mensal": 1006.7716666666668
+    },
+    {
+      "numero": 8,
+      "placa": "JDL3C31",
+      "modelo": "BYD",
+      "motorista": "Willian",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 800.0,
+      "total_mensal": 800.0
+    },
+    {
+      "numero": 9,
+      "placa": "QIF3C51",
+      "modelo": "RENAULT SANDERO",
+      "motorista": "Sem motorista",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 10,
+      "placa": "QUG1G30",
+      "modelo": "FORD KA",
+      "motorista": "Mano",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 11,
+      "placa": "QUT3E92",
+      "modelo": "VW VOYAGE",
+      "motorista": "Henrique",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
+    },
+    {
+      "numero": 13,
       "placa": "EWU4C67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
@@ -393,7 +1022,7 @@
           "observacao": ""
         }
       ],
-      "total": 0.0
+      "total": 24770.23
     }
   ],
   "vendas_resumo": {
@@ -406,16 +1035,16 @@
   "vendas_registros": [],
   "resumo": {
     "receita_mensal": 47400.0,
-    "total_manutencao": 0.0,
-    "num_servicos": 0,
-    "gastos_fixos_mensal": 0.0,
-    "total_investido_compras": 0.0,
+    "total_manutencao": 6510.0,
+    "num_servicos": 8,
+    "gastos_fixos_mensal": 2579.1983333333333,
+    "total_investido_compras": 24770.23,
     "total_veiculos": 12,
     "veiculos_ativos": 10,
     "veiculos_inativos": 2,
-    "total_combustivel_mes": 0.0,
+    "total_combustivel_mes": 1400.0,
     "total_km": 1535009.4000000001,
     "media_por_carro": 3950.0,
-    "lucro_mensal": 47400.0
+    "lucro_mensal": 38310.801666666666
   }
 }
