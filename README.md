@@ -1,98 +1,53 @@
-# 🚗 Fleet Manager — Dashboard de Gestão de Frota
+# 🚗 FleetManager — Dashboard de Gestão de Frota
 
-Fleet Manager é um dashboard interativo desenvolvido para análise e gerenciamento de frotas de veículos, focado em transformar dados brutos em informações visuais claras e úteis para tomada de decisão. O sistema permite acompanhar receitas, custos, desempenho da frota e indicadores-chave de forma simples e eficiente, diretamente no navegador.
+Dashboard profissional para gestão e acompanhamento de uma frota de veículos de aluguel, com visualização de receitas, manutenções, gastos fixos, compras e vendas.
 
-🔗 Acesse o projeto: https://eduudiass.github.io/dashboard-frota-eduardo/
+**🔗 [Acessar Dashboard](https://eduudiass.github.io/dashboard-frota-eduardo/)**
 
-O sistema funciona 100% no front-end, sem necessidade de backend, utilizando JavaScript puro, leitura de arquivos Excel e gráficos dinâmicos.
+---
 
 ## 📊 Funcionalidades
 
-- Dashboard com indicadores principais (KPIs)
-- Visualização de receita mensal, gastos e lucro
-- Gráficos dinâmicos com Chart.js
-- Upload de planilhas Excel (.xlsx)
-- Atualização instantânea dos dados
-- Navegação entre páginas (Dashboard, Veículos, Manutenção, Gastos)
-- Interface responsiva e moderna
+- **Dashboard Geral** — KPIs de receita, manutenção, gastos e lucro com gráficos interativos
+- **Veículos** — Cards individuais com busca e filtros por status, modelo e motorista
+- **Manutenções** — Resumo por veículo e registros detalhados de cada serviço
+- **Receitas** — Tabela mensal de aluguéis recebidos com percentual de recebimento
+- **Gastos Fixos** — Seguro, IPVA, licenciamento e combustível por veículo
+- **Compras** — Custos de aquisição e reforma detalhados por carro
+- **Vendas** — Controle de vendas com cálculo de lucro e margem
 
-## 🧠 Como funciona
+## 🛠️ Stack
 
-O fluxo do sistema é simples e eficiente:
+- **Frontend:** HTML, CSS, JavaScript puro
+- **Gráficos:** Chart.js
+- **Dados:** JSON gerado via Python (openpyxl)
+- **Hospedagem:** GitHub Pages
+- **Fonte de dados:** Planilha Excel (.xlsx)
 
-Excel (.xlsx) → Processamento com SheetJS → Conversão para objeto JavaScript → Renderização no DOM + gráficos
+## 📁 Estrutura
 
-O sistema também pode carregar dados automaticamente via `dados.json`, evitando problemas de cache com um sistema de atualização forçada.
+```
+dashboard-frota-eduardo/
+├── index.html          → Página principal
+├── app.js              → Lógica core e gráficos
+├── pages.js            → Renderização das páginas
+├── style.css           → Tema dark customizado
+├── dados.json          → Dados extraídos da planilha
+├── atualizar.py        → Script de extração de dados
+└── ATUALIZAR_SITE.bat  → Atalho para atualizar com duplo clique
+```
 
-## 📁 Estrutura do Projeto
+## 🔄 Como Atualizar os Dados
 
-- index.html → estrutura principal do sistema
-- style.css → estilização visual
-- app.js → lógica completa do dashboard
-- pages.js → controle de navegação entre páginas
-- dados.json → base de dados padrão
+1. Editar e salvar a planilha `Gestao_Frota_Atual.xlsx`
+2. **Fechar a planilha no Excel**
+3. Duplo clique no `ATUALIZAR_SITE.bat`
+4. Pressionar Enter quando solicitado
+5. Aguardar 1-2 minutos para o GitHub Pages atualizar
 
-## 🛠️ Tecnologias utilizadas
+## 👤 Autor
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- Chart.js
-- SheetJS (XLSX)
-- GitHub Pages (deploy)
+**Eduardo Dias** — Estudante de Data Science & AI na PUCRS
 
-## 📤 Como usar
-
-1. Acesse o site pelo link do GitHub Pages
-2. Clique em "Atualizar Dados"
-3. Selecione um arquivo Excel (.xlsx)
-4. O sistema processa automaticamente e atualiza o dashboard
-
-Também é possível atualizar os dados manualmente editando o arquivo `dados.json`.
-
-## 📌 Formato da planilha
-
-Para melhor funcionamento, a planilha deve conter colunas como:
-
-- placa
-- aluguel_mensal
-- km_atual
-- manutencao (opcional)
-- combustivel (opcional)
-- gastos (opcional)
-
-Exemplo:
-
-| placa | aluguel_mensal | km_atual |
-|------|----------------|----------|
-| ABC1234 | 2500 | 120000 |
-| XYZ5678 | 1800 | 98000 |
-
-## ⚠️ Limitações atuais
-
-- Não possui backend
-- Dados não são persistidos
-- Upload de Excel não salva permanentemente
-- Alguns dados são simulados caso não existam na planilha
-
-## 🔮 Melhorias futuras
-
-- Integração com banco de dados
-- Persistência de dados
-- Filtros avançados e busca
-- Exportação de relatórios
-- Atualização em tempo real
-- Análise preditiva com IA
-
-## 👨‍💻 Autor
-
-Eduardo Dias  
-Estudante de Ciência de Dados e Inteligência Artificial
-
-## 📄 Licença
-
-Projeto open-source para fins educacionais.
-
-## ⭐ Considerações finais
-
-Este projeto representa a construção de uma solução prática de análise de dados aplicada, saindo do nível teórico para um sistema funcional. É um passo importante na evolução para projetos mais complexos e profissionais dentro da área de dados.
+[![GitHub](https://img.shields.io/badge/GitHub-eduudiass-181717?style=flat&logo=github)](https://github.com/eduudiass)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Eduardo_Dias-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/eduudiass)
