@@ -152,7 +152,7 @@
       "motorista": "Alexandre",
       "contato": "",
       "aluguel_mensal": 2800.0,
-      "data_inicio": "46054",
+      "data_inicio": "01/02/2026",
       "km_atual": 92779.0,
       "status": "Ativo"
     }
@@ -255,15 +255,6 @@
       "motorista": "Henrique",
       "num_servicos": 2,
       "total_gasto": 2130.0,
-      "status": "Ativo"
-    },
-    {
-      "numero": 12,
-      "placa": "#REF!",
-      "modelo": "#REF!",
-      "motorista": "#REF!",
-      "num_servicos": 0,
-      "total_gasto": 0.0,
       "status": "Ativo"
     },
     {
@@ -404,18 +395,6 @@
       "modelo": "Henrique",
       "tipo": "2",
       "descricao": "2130",
-      "oficina": "",
-      "custo": 0.0,
-      "km_servico": "",
-      "prox_revisao": "Ativo"
-    },
-    {
-      "numero": 12,
-      "data": "#REF!",
-      "placa": "#REF!",
-      "modelo": "#REF!",
-      "tipo": "",
-      "descricao": "",
       "oficina": "",
       "custo": 0.0,
       "km_servico": "",
@@ -924,17 +903,6 @@
       "placa": "QUT3E92",
       "modelo": "VW VOYAGE",
       "motorista": "Henrique",
-      "seguro_anual": 0.0,
-      "ipva_anual": 0.0,
-      "licenciamento": 0.0,
-      "combustivel_mensal": 0.0,
-      "total_mensal": 0.0
-    },
-    {
-      "numero": 12,
-      "placa": "#REF!",
-      "modelo": "#REF!",
-      "motorista": "#REF!",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
