@@ -1,8 +1,7 @@
 """
 FleetManager — Gerador de dados.json
-Uso: python atualizar.py
-Coloque este script na mesma pasta da planilha e do repositório.
-Ele lê a planilha Gestao_Frota_Atual.xlsx e gera/atualiza o dados.json.
+Duplo clique ou rode: python atualizar.py
+Lê a planilha e atualiza o dados.json no repositório.
 """
 
 import json, datetime, sys, os
@@ -14,18 +13,17 @@ except ImportError:
     os.system(f"{sys.executable} -m pip install openpyxl")
     import openpyxl
 
-# Procura a planilha na mesma pasta do script
+# ═══ CAMINHOS ═══
 PLANILHA = r"C:\Users\Eduardo Dias\Downloads\Eduardo's Transportes\Gestao_Frota_Atual.xlsx"
 REPO = r"C:\Users\Eduardo Dias\Downloads\dashboard-frota-eduardo"
 OUTPUT = os.path.join(REPO, "dados.json")
 
 if not os.path.exists(PLANILHA):
-    print(f"ERRO: Planilha não encontrada em {PASTA}")
-    print("Coloque a planilha Gestao_Frota_Atual.xlsx na mesma pasta deste script.")
+    print(f"ERRO: Planilha nao encontrada em:\n  {PLANILHA}")
     input("Pressione Enter para sair...")
     sys.exit(1)
 
-print(f"Lendo: {os.path.basename(PLANILHA)}")
+print(f"Lendo: {PLANILHA}")
 
 wb = openpyxl.load_workbook(PLANILHA, data_only=True)
 
@@ -63,7 +61,7 @@ data = {
     "resumo": {}
 }
 
-# ═══ VEÍCULOS ═══
+# ═══ VEICULOS ═══
 ws = wb['Cadastro de Veículos']
 for r in range(4, 50):
     n = ws.cell(r, 1).value
@@ -86,9 +84,9 @@ for r in range(4, 50):
         "status": safe_str(ws.cell(r, 11).value) or 'Ativo'
     })
 
-print(f"  Veículos: {len(data['veiculos'])}")
+print(f"  Veiculos: {len(data['veiculos'])}")
 
-# ═══ MANUTENÇÃO RESUMO ═══
+# ═══ MANUTENCAO RESUMO ═══
 ws = wb['Manutenção']
 for r in range(4, 50):
     n = ws.cell(r, 1).value
@@ -107,11 +105,11 @@ for r in range(4, 50):
         "status": safe_str(ws.cell(r, 10).value) or 'Ativo'
     })
 
-# ═══ MANUTENÇÃO REGISTROS ═══
+# ═══ MANUTENCAO REGISTROS ═══
 reg_start = None
 for r in range(1, ws.max_row + 1):
     v = ws.cell(r, 1).value
-    if v and 'REGISTROS' in str(v).upper():
+    if v and 'REGISTROS DE MANUTEN' in str(v).upper():
         reg_start = r + 2
         break
 
@@ -136,7 +134,7 @@ if reg_start:
             "prox_revisao": safe_str(ws.cell(r, 10).value)
         })
 
-print(f"  Manutenções: {len(data['manutencao_resumo'])} resumos, {len(data['manutencao_registros'])} registros")
+print(f"  Manutencoes: {len(data['manutencao_resumo'])} resumos, {len(data['manutencao_registros'])} registros")
 
 # ═══ RECEITAS ═══
 ws = wb['Receitas Mensais']
@@ -269,12 +267,9 @@ res['media_por_carro'] = res['receita_mensal'] / res['total_veiculos'] if res['t
 res['lucro_mensal'] = res['receita_mensal'] - res['gastos_fixos_mensal'] - res['total_manutencao']
 
 # ═══ SALVAR ═══
-output = OUTPUT
-with open(output, 'w', encoding='utf-8') as f:
+with open(OUTPUT, 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-print(f"\n✅ dados.json atualizado com sucesso!")
-print(f"   Salvo em: {output}")
-print(f"\n   Agora faça o push para o GitHub:")
-print(f"   git add . && git commit -m \"atualizar dados\" && git push")
+print(f"\n✅ dados.json atualizado!")
+print(f"   Salvo em: {OUTPUT}")
 input("\nPressione Enter para sair...")
