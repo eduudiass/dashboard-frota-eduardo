@@ -152,7 +152,7 @@
       "motorista": "Alexandre",
       "contato": "",
       "aluguel_mensal": 2800.0,
-      "data_inicio": "01/02/2026",
+      "data_inicio": "46054",
       "km_atual": 92779.0,
       "status": "Ativo"
     }
@@ -163,8 +163,8 @@
       "placa": "IYR9I16",
       "modelo": "VW GOL",
       "motorista": "Vinicius",
-      "num_servicos": 1,
-      "total_gasto": 2510.0,
+      "num_servicos": 2,
+      "total_gasto": 3010.0,
       "status": "Ativo"
     },
     {
@@ -282,8 +282,8 @@
       "data": "IYR9I16",
       "placa": "VW GOL",
       "modelo": "Vinicius",
-      "tipo": "1",
-      "descricao": "2510",
+      "tipo": "2",
+      "descricao": "3010",
       "oficina": "",
       "custo": 0.0,
       "km_servico": "",
@@ -514,6 +514,18 @@
       "descricao": "OFICINA",
       "oficina": "GIBA",
       "custo": 2100.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 8,
+      "data": "28/03/2026",
+      "placa": "IYR9I16",
+      "modelo": "VW GOL",
+      "tipo": "CHAPEAÇÃO",
+      "descricao": "CHAPEADOR",
+      "oficina": "RAFAEL",
+      "custo": 500.0,
       "km_servico": "??",
       "prox_revisao": "??"
     }
@@ -1055,8 +1067,8 @@
   "vendas_registros": [],
   "resumo": {
     "receita_mensal": 47400.0,
-    "total_manutencao": 6010.0,
-    "num_servicos": 7,
+    "total_manutencao": 6510.0,
+    "num_servicos": 8,
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
     "total_veiculos": 12,
@@ -1065,6 +1077,6 @@
     "total_combustivel_mes": 1400.0,
     "total_km": 1535009.4000000001,
     "media_por_carro": 3950.0,
-    "lucro_mensal": 38810.801666666666
+    "lucro_mensal": 38310.801666666666
   }
 }
