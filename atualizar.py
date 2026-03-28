@@ -15,16 +15,9 @@ except ImportError:
     import openpyxl
 
 # Procura a planilha na mesma pasta do script
-PASTA = os.path.dirname(os.path.abspath(__file__))
-PLANILHA = None
-for f in os.listdir(PASTA):
-    if f.endswith('.xlsx') and 'Gestao' in f and 'Frota' in f:
-        PLANILHA = os.path.join(PASTA, f)
-        break
-
-if not PLANILHA:
-    # Tenta nome exato
-    PLANILHA = os.path.join(PASTA, 'Gestao_Frota_Atual.xlsx')
+PLANILHA = r"C:\Users\Eduardo Dias\Downloads\Eduardo's Transportes\Gestao_Frota_Atual.xlsx"
+REPO = r"C:\Users\Eduardo Dias\Downloads\dashboard-frota-eduardo"
+OUTPUT = os.path.join(REPO, "dados.json")
 
 if not os.path.exists(PLANILHA):
     print(f"ERRO: Planilha não encontrada em {PASTA}")
@@ -276,7 +269,7 @@ res['media_por_carro'] = res['receita_mensal'] / res['total_veiculos'] if res['t
 res['lucro_mensal'] = res['receita_mensal'] - res['gastos_fixos_mensal'] - res['total_manutencao']
 
 # ═══ SALVAR ═══
-output = os.path.join(PASTA, 'dados.json')
+output = OUTPUT
 with open(output, 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 

@@ -541,7 +541,7 @@
         "jan": 2400.0,
         "fev": 2400.0,
         "mar": 2400.0,
-        "abr": 0.0,
+        "abr": 2400.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -551,8 +551,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 7200.0,
-      "pct_recebido": 0.25
+      "total_recebido": 9600.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 2,
