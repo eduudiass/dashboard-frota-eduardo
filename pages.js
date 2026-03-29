@@ -93,34 +93,34 @@ const Pages = {
         `;
 
         // Charts
-        const vSorted = [...D.veiculos].sort((a,b) => b.aluguel_mensal - a.aluguel_mensal);
-        createBar('chReceita', 'receita', vSorted.map(v=>v.placa), vSorted.map(v=>v.aluguel_mensal), 'green');
+        const vSorted = [...D.veiculos].sort((a, b) => b.aluguel_mensal - a.aluguel_mensal);
+        createBar('chReceita', 'receita', vSorted.map(v => v.placa), vSorted.map(v => v.aluguel_mensal), 'green');
 
-        const mSorted = [...D.manutencao_resumo].filter(m=>m.total_gasto>0).sort((a,b) => b.total_gasto - a.total_gasto);
-        createBar('chManut', 'manut', mSorted.map(m=>m.placa), mSorted.map(m=>m.total_gasto), 'red');
+        const mSorted = [...D.manutencao_resumo].filter(m => m.total_gasto > 0).sort((a, b) => b.total_gasto - a.total_gasto);
+        createBar('chManut', 'manut', mSorted.map(m => m.placa), mSorted.map(m => m.total_gasto), 'red');
 
         // Status doughnut
-        const ativos = D.veiculos.filter(v=>v.status==='Ativo').length;
+        const ativos = D.veiculos.filter(v => v.status === 'Ativo').length;
         const inativos = D.veiculos.length - ativos;
-        createDoughnut('chStatus', 'status', ['Ativos','Inativos'], [ativos, inativos], ['#10b981','#ef4444']);
+        createDoughnut('chStatus', 'status', ['Ativos', 'Inativos'], [ativos, inativos], ['#10b981', '#ef4444']);
 
         // Modelos doughnut
         const modeloCount = {};
-        D.veiculos.forEach(v => { modeloCount[v.modelo] = (modeloCount[v.modelo]||0) + 1; });
+        D.veiculos.forEach(v => { modeloCount[v.modelo] = (modeloCount[v.modelo] || 0) + 1; });
         const mLabels = Object.keys(modeloCount);
         const mData = Object.values(modeloCount);
-        const mColors = ['#22d3ee','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4'];
+        const mColors = ['#22d3ee', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
         createDoughnut('chModelos', 'modelos', mLabels, mData, mColors.slice(0, mLabels.length));
 
         // Gastos bar
-        const gSorted = [...D.gastos].filter(g=>g.total_mensal>0).sort((a,b) => b.total_mensal - a.total_mensal);
-        createBar('chGastos', 'gastosBar', gSorted.map(g=>g.placa), gSorted.map(g=>g.total_mensal), 'yellow');
+        const gSorted = [...D.gastos].filter(g => g.total_mensal > 0).sort((a, b) => b.total_mensal - a.total_mensal);
+        createBar('chGastos', 'gastosBar', gSorted.map(g => g.placa), gSorted.map(g => g.total_mensal), 'yellow');
     },
 
     // ─── VEÍCULOS ───
     veiculos() {
         const c = document.getElementById('page-veiculos');
-        const modelos = [...new Set(D.veiculos.map(v=>v.modelo))];
+        const modelos = [...new Set(D.veiculos.map(v => v.modelo))];
 
         c.innerHTML = `
             <div class="page-header">
@@ -136,7 +136,7 @@ const Pages = {
                 </select>
                 <select class="filter-select" id="filterModelo">
                     <option value="todos">Todos os Modelos</option>
-                    ${modelos.map(m=>`<option value="${m}">${m}</option>`).join('')}
+                    ${modelos.map(m => `<option value="${m}">${m}</option>`).join('')}
                 </select>
             </div>
             <div class="v-grid" id="vGrid"></div>
@@ -153,8 +153,8 @@ const Pages = {
                 return ms && ss && mm;
             });
             document.getElementById('vGrid').innerHTML = filtered.map(v => {
-                const m = D.manutencao_resumo.find(x => x.placa === v.placa) || { total_gasto:0, num_servicos:0 };
-                const g = D.gastos.find(x => x.placa === v.placa) || { total_mensal:0 };
+                const m = D.manutencao_resumo.find(x => x.placa === v.placa) || { total_gasto: 0, num_servicos: 0 };
+                const g = D.gastos.find(x => x.placa === v.placa) || { total_mensal: 0 };
                 const statusCls = v.status === 'Ativo' ? 'ativo' : 'inativo';
                 return `
                     <div class="v-card" data-placa="${v.placa}">
@@ -183,8 +183,8 @@ const Pages = {
     // ─── MANUTENÇÕES ───
     manutencoes() {
         const c = document.getElementById('page-manutencoes');
-        const totalGasto = D.manutencao_resumo.reduce((s,m) => s + m.total_gasto, 0);
-        const totalServ = D.manutencao_resumo.reduce((s,m) => s + m.num_servicos, 0);
+        const totalGasto = D.manutencao_resumo.reduce((s, m) => s + m.total_gasto, 0);
+        const totalServ = D.manutencao_resumo.reduce((s, m) => s + m.num_servicos, 0);
 
         c.innerHTML = `
             <div class="page-header">
@@ -201,11 +201,11 @@ const Pages = {
             </div>
 
             <h3 style="font-size:1rem;margin-bottom:14px;color:var(--text-secondary)">Resumo por Veículo</h3>
-            <div class="table-wrap mb-20">
+            <div class="table-wrap table-responsive mb-20">
                 <table>
                     <thead><tr><th>Placa</th><th>Modelo</th><th>Motorista</th><th>Serviços</th><th>Total Gasto</th></tr></thead>
                     <tbody>
-                        ${D.manutencao_resumo.sort((a,b) => b.total_gasto - a.total_gasto).map(m => `
+                        ${[...new Map(D.manutencao_resumo.map(m => [m.placa, m])).values()].sort((a, b) => b.total_gasto - a.total_gasto).map(m => `
                             <tr>
                                 <td><strong class="text-accent">${m.placa}</strong></td>
                                 <td>${m.modelo}</td>
@@ -239,16 +239,16 @@ const Pages = {
             </div>` : ''}
         `;
 
-        const mSorted = [...D.manutencao_resumo].filter(m=>m.total_gasto>0).sort((a,b) => b.total_gasto - a.total_gasto);
-        createBar('chManutPage', 'manutPage', mSorted.map(m=>m.placa), mSorted.map(m=>m.total_gasto), 'red');
+        const mSorted = [...D.manutencao_resumo].filter(m => m.total_gasto > 0).sort((a, b) => b.total_gasto - a.total_gasto);
+        createBar('chManutPage', 'manutPage', mSorted.map(m => m.placa), mSorted.map(m => m.total_gasto), 'red');
     },
 
     // ─── RECEITAS ───
     receitas() {
         const c = document.getElementById('page-receitas');
-        const totalPrevisto = D.receitas.reduce((s,r) => s + r.aluguel_previsto, 0);
-        const totalRecebido = D.receitas.reduce((s,r) => s + r.total_recebido, 0);
-        const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+        const totalPrevisto = D.receitas.reduce((s, r) => s + r.aluguel_previsto, 0);
+        const totalRecebido = D.receitas.reduce((s, r) => s + r.total_recebido, 0);
+        const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
 
         // Check if any receita has data
         const hasData = D.receitas.some(r => r.total_recebido > 0);
@@ -263,7 +263,7 @@ const Pages = {
             </div>
 
             <div class="kpi-grid">
-                ${D.receitas.slice().sort((a,b) => b.aluguel_mensal - a.aluguel_mensal).slice(0, 4).map(r => `
+                ${D.receitas.slice().sort((a, b) => b.aluguel_mensal - a.aluguel_mensal).slice(0, 4).map(r => `
                     <div class="kpi-card accent">
                         <div class="kpi-icon accent">🚗</div>
                         <div>
@@ -291,20 +291,20 @@ const Pages = {
                     </thead>
                     <tbody>
                         ${D.receitas.map(r => {
-                            const pct = r.aluguel_previsto > 0 ? ((r.total_recebido / (r.aluguel_previsto * 12)) * 100).toFixed(0) : 0;
-                            return `<tr>
+            const pct = r.aluguel_previsto > 0 ? ((r.total_recebido / (r.aluguel_previsto * 12)) * 100).toFixed(0) : 0;
+            return `<tr>
                                 <td><strong class="text-accent">${r.placa}</strong></td>
                                 <td>${r.modelo}</td>
                                 <td>${r.motorista}</td>
                                 <td class="mono">${fmt(r.aluguel_previsto)}</td>
                                 ${meses.map(m => {
-                                    const v = r.receitas_mensais[m] || 0;
-                                    return `<td class="mono ${v > 0 ? 'text-green' : 'text-muted'}">${v > 0 ? fmt(v) : '—'}</td>`;
-                                }).join('')}
+                const v = r.receitas_mensais[m] || 0;
+                return `<td class="mono ${v > 0 ? 'text-green' : 'text-muted'}">${v > 0 ? fmt(v) : '—'}</td>`;
+            }).join('')}
                                 <td class="mono text-green"><strong>${fmt(r.total_recebido)}</strong></td>
                                 <td class="mono ${pct >= 80 ? 'text-green' : pct >= 40 ? 'text-yellow' : 'text-muted'}">${pct}%</td>
                             </tr>`;
-                        }).join('')}
+        }).join('')}
                     </tbody>
                 </table>
             </div>
@@ -315,17 +315,17 @@ const Pages = {
             </div>` : ''}
         `;
 
-        const vSorted = [...D.receitas].sort((a,b) => b.aluguel_previsto - a.aluguel_previsto);
-        createBar('chReceitaPage', 'receitaPage', vSorted.map(v=>v.placa), vSorted.map(v=>v.aluguel_previsto), 'green');
+        const vSorted = [...D.receitas].sort((a, b) => b.aluguel_previsto - a.aluguel_previsto);
+        createBar('chReceitaPage', 'receitaPage', vSorted.map(v => v.placa), vSorted.map(v => v.aluguel_previsto), 'green');
     },
 
     // ─── GASTOS ───
     gastos() {
         const c = document.getElementById('page-gastos');
-        const totalMensal = D.gastos.reduce((s,g) => s + g.total_mensal, 0);
-        const totalSeguro = D.gastos.reduce((s,g) => s + g.seguro_anual, 0);
-        const totalIPVA = D.gastos.reduce((s,g) => s + g.ipva_anual, 0);
-        const totalComb = D.gastos.reduce((s,g) => s + g.combustivel_mensal, 0);
+        const totalMensal = D.gastos.reduce((s, g) => s + g.total_mensal, 0);
+        const totalSeguro = D.gastos.reduce((s, g) => s + g.seguro_anual, 0);
+        const totalIPVA = D.gastos.reduce((s, g) => s + g.ipva_anual, 0);
+        const totalComb = D.gastos.reduce((s, g) => s + g.combustivel_mensal, 0);
 
         c.innerHTML = `
             <div class="page-header">
@@ -338,11 +338,11 @@ const Pages = {
             <div class="kpi-grid">
                 <div class="kpi-card yellow">
                     <div class="kpi-icon yellow">🛡️</div>
-                    <div><div class="kpi-label">Seguro (Anual)</div><div class="kpi-value">${fmt(totalSeguro)}</div><div class="kpi-sub">${fmt(totalSeguro/12)}/mês</div></div>
+                    <div><div class="kpi-label">Seguro (Anual)</div><div class="kpi-value">${fmt(totalSeguro)}</div><div class="kpi-sub">${fmt(totalSeguro / 12)}/mês</div></div>
                 </div>
                 <div class="kpi-card purple">
                     <div class="kpi-icon purple">📄</div>
-                    <div><div class="kpi-label">IPVA (Anual)</div><div class="kpi-value">${fmt(totalIPVA)}</div><div class="kpi-sub">${fmt(totalIPVA/12)}/mês</div></div>
+                    <div><div class="kpi-label">IPVA (Anual)</div><div class="kpi-value">${fmt(totalIPVA)}</div><div class="kpi-sub">${fmt(totalIPVA / 12)}/mês</div></div>
                 </div>
                 <div class="kpi-card red">
                     <div class="kpi-icon red">⛽</div>
@@ -359,14 +359,14 @@ const Pages = {
                 <table>
                     <thead><tr><th>Placa</th><th>Modelo</th><th>Motorista</th><th>Seguro/mês</th><th>IPVA/mês</th><th>Licenc./mês</th><th>Combustível</th><th>Total Mensal</th></tr></thead>
                     <tbody>
-                        ${D.gastos.sort((a,b) => b.total_mensal - a.total_mensal).map(g => `
+                        ${D.gastos.sort((a, b) => b.total_mensal - a.total_mensal).map(g => `
                             <tr>
                                 <td><strong class="text-accent">${g.placa}</strong></td>
                                 <td>${g.modelo}</td>
                                 <td>${g.motorista}</td>
-                                <td class="mono">${fmt(g.seguro_anual/12)}</td>
-                                <td class="mono">${fmt(g.ipva_anual/12)}</td>
-                                <td class="mono">${fmt(g.licenciamento/12)}</td>
+                                <td class="mono">${fmt(g.seguro_anual / 12)}</td>
+                                <td class="mono">${fmt(g.ipva_anual / 12)}</td>
+                                <td class="mono">${fmt(g.licenciamento / 12)}</td>
                                 <td class="mono">${g.combustivel_mensal > 0 ? fmt(g.combustivel_mensal) : '<span class="text-muted">—</span>'}</td>
                                 <td class="mono ${g.total_mensal > 0 ? 'text-red' : 'text-muted'}"><strong>${fmt(g.total_mensal)}</strong></td>
                             </tr>`).join('')}
@@ -375,15 +375,15 @@ const Pages = {
             </div>
         `;
 
-        const gSorted = [...D.gastos].filter(g=>g.total_mensal>0).sort((a,b) => b.total_mensal - a.total_mensal);
-        createBar('chGastosPage', 'gastosPage', gSorted.map(g=>g.placa), gSorted.map(g=>g.total_mensal), 'yellow');
+        const gSorted = [...D.gastos].filter(g => g.total_mensal > 0).sort((a, b) => b.total_mensal - a.total_mensal);
+        createBar('chGastosPage', 'gastosPage', gSorted.map(g => g.placa), gSorted.map(g => g.total_mensal), 'yellow');
     },
 
     // ─── COMPRAS ───
     compras() {
         const c = document.getElementById('page-compras');
-        const totalInvest = D.compras.reduce((s,cp) => s + cp.total, 0);
-        const totalItens = D.compras.reduce((s,cp) => s + cp.itens.length, 0);
+        const totalInvest = D.compras.reduce((s, cp) => s + cp.total, 0);
+        const totalItens = D.compras.reduce((s, cp) => s + cp.itens.length, 0);
 
         if (D.compras.length === 0 || (D.compras.length > 0 && totalItens === 0)) {
             c.innerHTML = `
@@ -396,7 +396,7 @@ const Pages = {
         // Build category breakdown
         const catTotals = {};
         D.compras.forEach(cp => cp.itens.forEach(it => {
-            if (it.categoria) catTotals[it.categoria] = (catTotals[it.categoria]||0) + it.valor;
+            if (it.categoria) catTotals[it.categoria] = (catTotals[it.categoria] || 0) + it.valor;
         }));
 
         c.innerHTML = `
@@ -460,7 +460,7 @@ const Pages = {
 
         const catLabels = Object.keys(catTotals);
         const catData = Object.values(catTotals);
-        const catColors = ['#22d3ee','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4','#f97316','#14b8a6','#a78bfa'];
+        const catColors = ['#22d3ee', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316', '#14b8a6', '#a78bfa'];
         createDoughnut('chComprasCat', 'comprasCat', catLabels, catData, catColors.slice(0, catLabels.length));
     },
 
