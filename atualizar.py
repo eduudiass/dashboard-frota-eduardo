@@ -49,6 +49,16 @@ def safe_int(v):
     except:
         return 0
 
+def mask_placa(p):
+    """ABC1D23 -> AB***23"""
+    if not p or len(p) < 4:
+        return p
+    return p[:2] + '***' + p[-2:]
+
+def mask_contato(c):
+    """Oculta contato"""
+    return ''
+
 data = {
     "veiculos": [],
     "manutencao_resumo": [],
@@ -266,14 +276,36 @@ res['total_km'] = sum(v['km_atual'] for v in data['veiculos'])
 res['media_por_carro'] = res['receita_mensal'] / res['total_veiculos'] if res['total_veiculos'] > 0 else 0
 res['lucro_mensal'] = res['receita_mensal'] - res['gastos_fixos_mensal'] - res['total_manutencao']
 
+# ═══ MASCARAR DADOS SENSÍVEIS ═══
+def mascarar_dados(data):
+    for v in data['veiculos']:
+        v['placa'] = mask_placa(v.get('placa', ''))
+        v['contato'] = ''
+    for m in data['manutencao_resumo']:
+        m['placa'] = mask_placa(m.get('placa', ''))
+    for r in data['manutencao_registros']:
+        r['placa'] = mask_placa(r.get('placa', ''))
+    for r in data['receitas']:
+        r['placa'] = mask_placa(r.get('placa', ''))
+    for g in data['gastos']:
+        g['placa'] = mask_placa(g.get('placa', ''))
+    for c in data['compras']:
+        # Mascarar placa no titulo
+        titulo = c.get('titulo', '')
+        import re
+        placas_no_titulo = re.findall(r'[A-Z]{3}\d[A-Z]\d{2}', titulo)
+        for p in placas_no_titulo:
+            titulo = titulo.replace(p, mask_placa(p))
+        c['titulo'] = titulo
+    for v in data['vendas_registros']:
+        v['placa'] = mask_placa(v.get('placa', ''))
+
+mascarar_dados(data)
+
 # ═══ SALVAR ═══
 with open(OUTPUT, 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 print(f"\n✅ dados.json atualizado!")
 print(f"   Salvo em: {OUTPUT}")
-<<<<<<< HEAD
 input("\nPressione Enter para sair...")
-=======
-input("\nPressione Enter para sair...")
->>>>>>> cd98d589a61856d76c408dee23342a8b55c4d0d0

@@ -2,12 +2,12 @@
   "veiculos": [
     {
       "numero": 1,
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "ano": 2018,
       "cor": "BRANCO",
       "motorista": "Vinicius",
-      "contato": "51 991631858",
+      "contato": "",
       "aluguel_mensal": 2400.0,
       "data_inicio": "01/01/2026",
       "km_atual": 299382.0,
@@ -15,12 +15,12 @@
     },
     {
       "numero": 2,
-      "placa": "JAB7G92",
+      "placa": "JA***92",
       "modelo": "VW VIRTUS",
       "ano": 2020,
       "cor": "PRETO",
       "motorista": "Ricardo",
-      "contato": "51 980243095",
+      "contato": "",
       "aluguel_mensal": 3400.0,
       "data_inicio": "01/01/2026",
       "km_atual": 103446.6,
@@ -28,7 +28,7 @@
     },
     {
       "numero": 3,
-      "placa": "JAH9H52",
+      "placa": "JA***52",
       "modelo": "FORD KA",
       "ano": 2020,
       "cor": "BRANCO",
@@ -41,12 +41,12 @@
     },
     {
       "numero": 4,
-      "placa": "JCL0J97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "ano": 2023,
       "cor": "CINZA",
       "motorista": "Rodrigo",
-      "contato": "51 992447962",
+      "contato": "",
       "aluguel_mensal": 4000.0,
       "data_inicio": "01/01/2026",
       "km_atual": 91790.0,
@@ -54,12 +54,12 @@
     },
     {
       "numero": 5,
-      "placa": "JCN6C97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "CINZA",
       "motorista": "Matheus",
-      "contato": "51 996566187",
+      "contato": "",
       "aluguel_mensal": 4000.0,
       "data_inicio": "01/01/2026",
       "km_atual": 43763.0,
@@ -67,12 +67,12 @@
     },
     {
       "numero": 6,
-      "placa": "JCN6D02",
+      "placa": "JC***02",
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "BRANCO",
       "motorista": "Adriano",
-      "contato": "51 994680016",
+      "contato": "",
       "aluguel_mensal": 4000.0,
       "data_inicio": "01/01/2026",
       "km_atual": 45792.0,
@@ -80,12 +80,12 @@
     },
     {
       "numero": 7,
-      "placa": "JCN6D06",
+      "placa": "JC***06",
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "BRANCO",
       "motorista": "Dudu",
-      "contato": "51985228611",
+      "contato": "",
       "aluguel_mensal": 4000.0,
       "data_inicio": "01/01/2026",
       "km_atual": 28966.0,
@@ -93,12 +93,12 @@
     },
     {
       "numero": 8,
-      "placa": "JDL3C31",
+      "placa": "JD***31",
       "modelo": "BYD",
       "ano": 2024,
       "cor": "BRANCO",
       "motorista": "Willian",
-      "contato": "48 999642951",
+      "contato": "",
       "aluguel_mensal": 12000.0,
       "data_inicio": "01/01/2026",
       "km_atual": 62965.9,
@@ -106,7 +106,7 @@
     },
     {
       "numero": 9,
-      "placa": "QIF3C51",
+      "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
       "ano": 2016,
       "cor": "BRANCO",
@@ -119,12 +119,12 @@
     },
     {
       "numero": 10,
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "ano": 2019,
       "cor": "BRANCO",
       "motorista": "Mano",
-      "contato": "51 985593578",
+      "contato": "",
       "aluguel_mensal": 2400.0,
       "data_inicio": "01/01/2026",
       "km_atual": 185895.2,
@@ -132,12 +132,12 @@
     },
     {
       "numero": 11,
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "ano": 2019,
       "cor": "PRATA",
       "motorista": "Henrique",
-      "contato": "51 992458597",
+      "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "01/01/2026",
       "km_atual": 200914.7,
@@ -145,14 +145,14 @@
     },
     {
       "numero": 12,
-      "placa": "EWU4C67",
+      "placa": "EW***67",
       "modelo": "FORD KA",
       "ano": 2020,
       "cor": "PRETO",
       "motorista": "Alexandre",
       "contato": "",
       "aluguel_mensal": 2800.0,
-      "data_inicio": "46054",
+      "data_inicio": "01/02/2026",
       "km_atual": 92779.0,
       "status": "Ativo"
     }
@@ -160,7 +160,7 @@
   "manutencao_resumo": [
     {
       "numero": 1,
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "motorista": "Vinicius",
       "num_servicos": 2,
@@ -169,7 +169,7 @@
     },
     {
       "numero": 2,
-      "placa": "JAB7G92",
+      "placa": "JA***92",
       "modelo": "VW VIRTUS",
       "motorista": "Ricardo",
       "num_servicos": 0,
@@ -178,7 +178,7 @@
     },
     {
       "numero": 3,
-      "placa": "JAH9H52",
+      "placa": "JA***52",
       "modelo": "FORD KA",
       "motorista": "Sem motorista",
       "num_servicos": 0,
@@ -187,7 +187,7 @@
     },
     {
       "numero": 4,
-      "placa": "JCL0J97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Rodrigo",
       "num_servicos": 0,
@@ -196,7 +196,7 @@
     },
     {
       "numero": 5,
-      "placa": "JCN6C97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Matheus",
       "num_servicos": 0,
@@ -205,7 +205,7 @@
     },
     {
       "numero": 6,
-      "placa": "JCN6D02",
+      "placa": "JC***02",
       "modelo": "VW VIRTUS",
       "motorista": "Adriano",
       "num_servicos": 1,
@@ -214,7 +214,7 @@
     },
     {
       "numero": 7,
-      "placa": "JCN6D06",
+      "placa": "JC***06",
       "modelo": "VW VIRTUS",
       "motorista": "Dudu",
       "num_servicos": 0,
@@ -223,7 +223,7 @@
     },
     {
       "numero": 8,
-      "placa": "JDL3C31",
+      "placa": "JD***31",
       "modelo": "BYD",
       "motorista": "Willian",
       "num_servicos": 1,
@@ -232,7 +232,7 @@
     },
     {
       "numero": 9,
-      "placa": "QIF3C51",
+      "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
       "motorista": "Sem motorista",
       "num_servicos": 0,
@@ -241,7 +241,7 @@
     },
     {
       "numero": 10,
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "motorista": "Mano",
       "num_servicos": 2,
@@ -250,7 +250,7 @@
     },
     {
       "numero": 11,
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "motorista": "Henrique",
       "num_servicos": 2,
@@ -259,16 +259,7 @@
     },
     {
       "numero": 12,
-      "placa": "EWU4C67",
-      "modelo": "FORD KA",
-      "motorista": "Alexandre",
-      "num_servicos": 0,
-      "total_gasto": 0.0,
-      "status": "Ativo"
-    },
-    {
-      "numero": 13,
-      "placa": "EWU4C67",
+      "placa": "EW***67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
       "num_servicos": 0,
@@ -280,7 +271,7 @@
     {
       "numero": 1,
       "data": "01/03/2026",
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "tipo": "GERAL",
       "descricao": "OFICINA",
@@ -292,7 +283,7 @@
     {
       "numero": 2,
       "data": "13/03/2026",
-      "placa": "JCN6D02",
+      "placa": "JC***02",
       "modelo": "VW VIRTUS",
       "tipo": "OLEO",
       "descricao": "OFICINA",
@@ -304,7 +295,7 @@
     {
       "numero": 3,
       "data": "13/03/2026",
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "tipo": "DISCO",
       "descricao": "OFICINA",
@@ -316,7 +307,7 @@
     {
       "numero": 4,
       "data": "12/03/2026",
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "tipo": "OLEO",
       "descricao": "OFICINA",
@@ -328,7 +319,7 @@
     {
       "numero": 5,
       "data": "07/03/2026",
-      "placa": "JDL3C31",
+      "placa": "JD***31",
       "modelo": "BYD",
       "tipo": "PNEU",
       "descricao": "BORRACHARIA",
@@ -340,7 +331,7 @@
     {
       "numero": 6,
       "data": "20/03/2026",
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "tipo": "VELA",
       "descricao": "OFICINA",
@@ -352,7 +343,7 @@
     {
       "numero": 7,
       "data": "20/03/2026",
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "tipo": "GERAL",
       "descricao": "OFICINA",
@@ -364,7 +355,7 @@
     {
       "numero": 8,
       "data": "28/03/2026",
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "tipo": "CHAPEAÇÃO",
       "descricao": "CHAPEADOR",
@@ -377,7 +368,7 @@
   "receitas": [
     {
       "numero": 1,
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "motorista": "Vinicius",
       "aluguel_previsto": 2400.0,
@@ -400,7 +391,7 @@
     },
     {
       "numero": 2,
-      "placa": "JAB7G92",
+      "placa": "JA***92",
       "modelo": "VW VIRTUS",
       "motorista": "Ricardo",
       "aluguel_previsto": 3400.0,
@@ -423,7 +414,7 @@
     },
     {
       "numero": 3,
-      "placa": "JAH9H52",
+      "placa": "JA***52",
       "modelo": "FORD KA",
       "motorista": "Sem motorista",
       "aluguel_previsto": 2800.0,
@@ -446,7 +437,7 @@
     },
     {
       "numero": 4,
-      "placa": "JCL0J97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Rodrigo",
       "aluguel_previsto": 4000.0,
@@ -469,7 +460,7 @@
     },
     {
       "numero": 5,
-      "placa": "JCN6C97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Matheus",
       "aluguel_previsto": 4000.0,
@@ -492,7 +483,7 @@
     },
     {
       "numero": 6,
-      "placa": "JCN6D02",
+      "placa": "JC***02",
       "modelo": "VW VIRTUS",
       "motorista": "Adriano",
       "aluguel_previsto": 4000.0,
@@ -515,7 +506,7 @@
     },
     {
       "numero": 7,
-      "placa": "JCN6D06",
+      "placa": "JC***06",
       "modelo": "VW VIRTUS",
       "motorista": "Dudu",
       "aluguel_previsto": 4000.0,
@@ -538,7 +529,7 @@
     },
     {
       "numero": 8,
-      "placa": "JDL3C31",
+      "placa": "JD***31",
       "modelo": "BYD",
       "motorista": "Willian",
       "aluguel_previsto": 12000.0,
@@ -561,7 +552,7 @@
     },
     {
       "numero": 9,
-      "placa": "QIF3C51",
+      "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
       "motorista": "Sem motorista",
       "aluguel_previsto": 2800.0,
@@ -584,7 +575,7 @@
     },
     {
       "numero": 10,
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "motorista": "Mano",
       "aluguel_previsto": 2400.0,
@@ -607,7 +598,7 @@
     },
     {
       "numero": 11,
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "motorista": "Henrique",
       "aluguel_previsto": 2800.0,
@@ -630,7 +621,7 @@
     },
     {
       "numero": 12,
-      "placa": "EWU4C67",
+      "placa": "EW***67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
       "aluguel_previsto": 2800.0,
@@ -655,7 +646,7 @@
   "gastos": [
     {
       "numero": 1,
-      "placa": "IYR9I16",
+      "placa": "IY***16",
       "modelo": "VW GOL",
       "motorista": "Vinicius",
       "seguro_anual": 0.0,
@@ -666,7 +657,7 @@
     },
     {
       "numero": 2,
-      "placa": "JAB7G92",
+      "placa": "JA***92",
       "modelo": "VW VIRTUS",
       "motorista": "Ricardo",
       "seguro_anual": 0.0,
@@ -677,7 +668,7 @@
     },
     {
       "numero": 3,
-      "placa": "JAH9H52",
+      "placa": "JA***52",
       "modelo": "FORD KA",
       "motorista": "Sem motorista",
       "seguro_anual": 0.0,
@@ -688,7 +679,7 @@
     },
     {
       "numero": 4,
-      "placa": "JCL0J97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Rodrigo",
       "seguro_anual": 0.0,
@@ -699,7 +690,7 @@
     },
     {
       "numero": 5,
-      "placa": "JCN6C97",
+      "placa": "JC***97",
       "modelo": "VW VIRTUS",
       "motorista": "Matheus",
       "seguro_anual": 4610.01,
@@ -710,7 +701,7 @@
     },
     {
       "numero": 6,
-      "placa": "JCN6D02",
+      "placa": "JC***02",
       "modelo": "VW VIRTUS",
       "motorista": "Adriano",
       "seguro_anual": 4659.11,
@@ -721,7 +712,7 @@
     },
     {
       "numero": 7,
-      "placa": "JCN6D06",
+      "placa": "JC***06",
       "modelo": "VW VIRTUS",
       "motorista": "Dudu",
       "seguro_anual": 4881.26,
@@ -732,7 +723,7 @@
     },
     {
       "numero": 8,
-      "placa": "JDL3C31",
+      "placa": "JD***31",
       "modelo": "BYD",
       "motorista": "Willian",
       "seguro_anual": 0.0,
@@ -743,7 +734,7 @@
     },
     {
       "numero": 9,
-      "placa": "QIF3C51",
+      "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
       "motorista": "Sem motorista",
       "seguro_anual": 0.0,
@@ -754,7 +745,7 @@
     },
     {
       "numero": 10,
-      "placa": "QUG1G30",
+      "placa": "QU***30",
       "modelo": "FORD KA",
       "motorista": "Mano",
       "seguro_anual": 0.0,
@@ -765,7 +756,7 @@
     },
     {
       "numero": 11,
-      "placa": "QUT3E92",
+      "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "motorista": "Henrique",
       "seguro_anual": 0.0,
@@ -776,7 +767,7 @@
     },
     {
       "numero": 12,
-      "placa": "EWU4C67",
+      "placa": "EW***67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
       "seguro_anual": 0.0,
@@ -787,7 +778,7 @@
     },
     {
       "numero": 13,
-      "placa": "EWU4C67",
+      "placa": "EW***67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
       "seguro_anual": 0.0,
@@ -799,7 +790,7 @@
   ],
   "compras": [
     {
-      "titulo": "🚗  EWU4C67  —  FORD KA 2019",
+      "titulo": "🚗  EW***67  —  FORD KA 2019",
       "itens": [
         {
           "numero": 1,
