@@ -147,13 +147,26 @@
       "numero": 12,
       "placa": "EW***67",
       "modelo": "FORD KA",
-      "ano": 2020,
+      "ano": 2019,
       "cor": "PRETO",
       "motorista": "Alexandre",
       "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "01/02/2026",
       "km_atual": 92779.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 13,
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "ano": 2019,
+      "cor": "PRETO",
+      "motorista": "Sem motorista",
+      "contato": "",
+      "aluguel_mensal": 0.0,
+      "data_inicio": "",
+      "km_atual": 87247.0,
       "status": "Ativo"
     }
   ],
@@ -181,8 +194,8 @@
       "placa": "JA***52",
       "modelo": "FORD KA",
       "motorista": "Sem motorista",
-      "num_servicos": 0,
-      "total_gasto": 0.0,
+      "num_servicos": 1,
+      "total_gasto": 180.0,
       "status": "Ativo"
     },
     {
@@ -253,8 +266,8 @@
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
       "motorista": "Henrique",
-      "num_servicos": 2,
-      "total_gasto": 2130.0,
+      "num_servicos": 3,
+      "total_gasto": 2310.0,
       "status": "Ativo"
     },
     {
@@ -262,6 +275,15 @@
       "placa": "EW***67",
       "modelo": "FORD KA",
       "motorista": "Alexandre",
+      "num_servicos": 0,
+      "total_gasto": 0.0,
+      "status": "Ativo"
+    },
+    {
+      "numero": 13,
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
       "num_servicos": 0,
       "total_gasto": 0.0,
       "status": "Ativo"
@@ -363,6 +385,30 @@
       "custo": 500.0,
       "km_servico": "??",
       "prox_revisao": "??"
+    },
+    {
+      "numero": 9,
+      "data": "01/04/2026",
+      "placa": "JA***52",
+      "modelo": "FORD KA",
+      "tipo": "FREIO",
+      "descricao": "OFICINA",
+      "oficina": "GIBA",
+      "custo": 180.0,
+      "km_servico": "??",
+      "prox_revisao": "??"
+    },
+    {
+      "numero": 10,
+      "data": "01/04/2026",
+      "placa": "QU***92",
+      "modelo": "VW VOYAGE",
+      "tipo": "FREIO",
+      "descricao": "OFICINA",
+      "oficina": "GIBA",
+      "custo": 180.0,
+      "km_servico": "",
+      "prox_revisao": ""
     }
   ],
   "receitas": [
@@ -641,6 +687,29 @@
       },
       "total_recebido": 2800.0,
       "pct_recebido": 0.0
+    },
+    {
+      "numero": 13,
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "aluguel_previsto": 2800.0,
+      "receitas_mensais": {
+        "jan": 0.0,
+        "fev": 0.0,
+        "mar": 0.0,
+        "abr": 0.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 0.0,
+      "pct_recebido": 0.0
     }
   ],
   "gastos": [
@@ -786,6 +855,17 @@
       "licenciamento": 0.0,
       "combustivel_mensal": 0.0,
       "total_mensal": 0.0
+    },
+    {
+      "numero": 14,
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "motorista": "Sem motorista",
+      "seguro_anual": 0.0,
+      "ipva_anual": 0.0,
+      "licenciamento": 0.0,
+      "combustivel_mensal": 0.0,
+      "total_mensal": 0.0
     }
   ],
   "compras": [
@@ -902,16 +982,16 @@
   "vendas_registros": [],
   "resumo": {
     "receita_mensal": 47400.0,
-    "total_manutencao": 6510.0,
-    "num_servicos": 8,
+    "total_manutencao": 6870.0,
+    "num_servicos": 10,
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
-    "total_veiculos": 12,
-    "veiculos_ativos": 10,
+    "total_veiculos": 13,
+    "veiculos_ativos": 11,
     "veiculos_inativos": 2,
     "total_combustivel_mes": 1400.0,
-    "total_km": 1535009.4000000001,
-    "media_por_carro": 3950.0,
-    "lucro_mensal": 38310.801666666666
+    "total_km": 1622256.4000000001,
+    "media_por_carro": 3646.153846153846,
+    "lucro_mensal": 37950.801666666666
   }
 }
