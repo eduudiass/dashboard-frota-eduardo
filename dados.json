@@ -8,9 +8,9 @@
       "cor": "BRANCO",
       "motorista": "Vinicius",
       "contato": "",
-      "aluguel_mensal": 2400.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 299382.0,
+      "aluguel_mensal": 299382.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -19,11 +19,11 @@
       "modelo": "VW VIRTUS",
       "ano": 2020,
       "cor": "PRETO",
-      "motorista": "Ricardo",
+      "motorista": "Natalia",
       "contato": "",
-      "aluguel_mensal": 3400.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 103446.6,
+      "aluguel_mensal": 103446.6,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -32,12 +32,12 @@
       "modelo": "FORD KA",
       "ano": 2020,
       "cor": "BRANCO",
-      "motorista": "Sem motorista",
+      "motorista": "Dudu",
       "contato": "",
-      "aluguel_mensal": 2800.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 88586.5,
-      "status": "Inativo"
+      "aluguel_mensal": 88586.5,
+      "data_inicio": "Inativo",
+      "km_atual": 0.0,
+      "status": "Ativo"
     },
     {
       "numero": 4,
@@ -47,9 +47,9 @@
       "cor": "CINZA",
       "motorista": "Rodrigo",
       "contato": "",
-      "aluguel_mensal": 4000.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 91790.0,
+      "aluguel_mensal": 91790.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -60,9 +60,9 @@
       "cor": "CINZA",
       "motorista": "Matheus",
       "contato": "",
-      "aluguel_mensal": 4000.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 43763.0,
+      "aluguel_mensal": 43763.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -71,11 +71,11 @@
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "BRANCO",
-      "motorista": "Adriano",
+      "motorista": "Rafael",
       "contato": "",
-      "aluguel_mensal": 4000.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 45792.0,
+      "aluguel_mensal": 45792.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -84,11 +84,11 @@
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "BRANCO",
-      "motorista": "Dudu",
+      "motorista": "Ricardo",
       "contato": "",
-      "aluguel_mensal": 4000.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 28966.0,
+      "aluguel_mensal": 28966.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -99,9 +99,9 @@
       "cor": "BRANCO",
       "motorista": "Willian",
       "contato": "",
-      "aluguel_mensal": 12000.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 62965.9,
+      "aluguel_mensal": 62965.9,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -110,12 +110,12 @@
       "modelo": "RENAULT SANDERO",
       "ano": 2016,
       "cor": "BRANCO",
-      "motorista": "Sem motorista",
+      "motorista": "Diego",
       "contato": "",
-      "aluguel_mensal": 2800.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 290728.5,
-      "status": "Inativo"
+      "aluguel_mensal": 290728.5,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
+      "status": "Ativo"
     },
     {
       "numero": 10,
@@ -125,9 +125,9 @@
       "cor": "BRANCO",
       "motorista": "Mano",
       "contato": "",
-      "aluguel_mensal": 2400.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 185895.2,
+      "aluguel_mensal": 185895.2,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -136,11 +136,11 @@
       "modelo": "VW VOYAGE",
       "ano": 2019,
       "cor": "PRATA",
-      "motorista": "Henrique",
+      "motorista": "Wagner",
       "contato": "",
-      "aluguel_mensal": 2800.0,
-      "data_inicio": "01/01/2026",
-      "km_atual": 200914.7,
+      "aluguel_mensal": 200914.7,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -151,9 +151,9 @@
       "cor": "PRETO",
       "motorista": "Alexandre",
       "contato": "",
-      "aluguel_mensal": 2800.0,
-      "data_inicio": "01/02/2026",
-      "km_atual": 92779.0,
+      "aluguel_mensal": 92779.0,
+      "data_inicio": "Ativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     },
     {
@@ -164,9 +164,9 @@
       "cor": "PRETO",
       "motorista": "Sem motorista",
       "contato": "",
-      "aluguel_mensal": 0.0,
-      "data_inicio": "",
-      "km_atual": 87247.0,
+      "aluguel_mensal": 87247.0,
+      "data_inicio": "Inativo",
+      "km_atual": 0.0,
       "status": "Ativo"
     }
   ],
@@ -184,7 +184,7 @@
       "numero": 2,
       "placa": "JA***92",
       "modelo": "VW VIRTUS",
-      "motorista": "Ricardo",
+      "motorista": "Natalia",
       "num_servicos": 0,
       "total_gasto": 0.0,
       "status": "Ativo"
@@ -193,7 +193,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Dudu",
       "num_servicos": 1,
       "total_gasto": 180.0,
       "status": "Ativo"
@@ -220,7 +220,7 @@
       "numero": 6,
       "placa": "JC***02",
       "modelo": "VW VIRTUS",
-      "motorista": "Adriano",
+      "motorista": "Rafael",
       "num_servicos": 1,
       "total_gasto": 30.0,
       "status": "Ativo"
@@ -229,7 +229,7 @@
       "numero": 7,
       "placa": "JC***06",
       "modelo": "VW VIRTUS",
-      "motorista": "Dudu",
+      "motorista": "Ricardo",
       "num_servicos": 0,
       "total_gasto": 0.0,
       "status": "Ativo"
@@ -247,7 +247,7 @@
       "numero": 9,
       "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
-      "motorista": "Sem motorista",
+      "motorista": "Diego",
       "num_servicos": 0,
       "total_gasto": 0.0,
       "status": "Ativo"
@@ -265,7 +265,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Henrique",
+      "motorista": "Wagner",
       "num_servicos": 3,
       "total_gasto": 2310.0,
       "status": "Ativo"
@@ -299,8 +299,8 @@
       "descricao": "OFICINA",
       "oficina": "ADA",
       "custo": 2510.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 2,
@@ -311,8 +311,8 @@
       "descricao": "OFICINA",
       "oficina": "ADA",
       "custo": 30.0,
-      "km_servico": "??",
-      "prox_revisao": "10000"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 3,
@@ -323,8 +323,8 @@
       "descricao": "OFICINA",
       "oficina": "ADA",
       "custo": 580.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 4,
@@ -335,8 +335,8 @@
       "descricao": "OFICINA",
       "oficina": "ADA",
       "custo": 30.0,
-      "km_servico": "??",
-      "prox_revisao": "10000"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 5,
@@ -347,8 +347,8 @@
       "descricao": "BORRACHARIA",
       "oficina": "THIAGO",
       "custo": 50.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 6,
@@ -359,8 +359,8 @@
       "descricao": "OFICINA",
       "oficina": "ADA",
       "custo": 710.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 7,
@@ -371,8 +371,8 @@
       "descricao": "OFICINA",
       "oficina": "GIBA",
       "custo": 2100.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 8,
@@ -383,8 +383,8 @@
       "descricao": "CHAPEADOR",
       "oficina": "RAFAEL",
       "custo": 500.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 9,
@@ -395,8 +395,8 @@
       "descricao": "OFICINA",
       "oficina": "GIBA",
       "custo": 180.0,
-      "km_servico": "??",
-      "prox_revisao": "??"
+      "km_servico": "",
+      "prox_revisao": ""
     },
     {
       "numero": 10,
@@ -439,7 +439,7 @@
       "numero": 2,
       "placa": "JA***92",
       "modelo": "VW VIRTUS",
-      "motorista": "Ricardo",
+      "motorista": "Natalia",
       "aluguel_previsto": 3400.0,
       "receitas_mensais": {
         "jan": 3400.0,
@@ -462,7 +462,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Dudu",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -531,7 +531,7 @@
       "numero": 6,
       "placa": "JC***02",
       "modelo": "VW VIRTUS",
-      "motorista": "Adriano",
+      "motorista": "Rafael",
       "aluguel_previsto": 4000.0,
       "receitas_mensais": {
         "jan": 4000.0,
@@ -554,7 +554,7 @@
       "numero": 7,
       "placa": "JC***06",
       "modelo": "VW VIRTUS",
-      "motorista": "Dudu",
+      "motorista": "Ricardo",
       "aluguel_previsto": 4000.0,
       "receitas_mensais": {
         "jan": 0.0,
@@ -600,7 +600,7 @@
       "numero": 9,
       "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
-      "motorista": "Sem motorista",
+      "motorista": "Diego",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -646,7 +646,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Henrique",
+      "motorista": "Wagner",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -728,7 +728,7 @@
       "numero": 2,
       "placa": "JA***92",
       "modelo": "VW VIRTUS",
-      "motorista": "Ricardo",
+      "motorista": "Natalia",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -739,7 +739,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Dudu",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -772,7 +772,7 @@
       "numero": 6,
       "placa": "JC***02",
       "modelo": "VW VIRTUS",
-      "motorista": "Adriano",
+      "motorista": "Rafael",
       "seguro_anual": 4659.11,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -783,7 +783,7 @@
       "numero": 7,
       "placa": "JC***06",
       "modelo": "VW VIRTUS",
-      "motorista": "Dudu",
+      "motorista": "Ricardo",
       "seguro_anual": 4881.26,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -805,7 +805,7 @@
       "numero": 9,
       "placa": "QI***51",
       "modelo": "RENAULT SANDERO",
-      "motorista": "Sem motorista",
+      "motorista": "Diego",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -827,7 +827,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Henrique",
+      "motorista": "Wagner",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -847,17 +847,6 @@
     },
     {
       "numero": 13,
-      "placa": "EW***67",
-      "modelo": "FORD KA",
-      "motorista": "Alexandre",
-      "seguro_anual": 0.0,
-      "ipva_anual": 0.0,
-      "licenciamento": 0.0,
-      "combustivel_mensal": 0.0,
-      "total_mensal": 0.0
-    },
-    {
-      "numero": 14,
       "placa": "FU***98",
       "modelo": "FORD KA",
       "motorista": "Sem motorista",
@@ -981,17 +970,17 @@
   },
   "vendas_registros": [],
   "resumo": {
-    "receita_mensal": 47400.0,
+    "receita_mensal": 1622256.4000000001,
     "total_manutencao": 6870.0,
     "num_servicos": 10,
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
     "total_veiculos": 13,
-    "veiculos_ativos": 11,
-    "veiculos_inativos": 2,
+    "veiculos_ativos": 13,
+    "veiculos_inativos": 0,
     "total_combustivel_mes": 1400.0,
-    "total_km": 1622256.4000000001,
-    "media_por_carro": 3646.153846153846,
-    "lucro_mensal": 37950.801666666666
+    "total_km": 0.0,
+    "media_por_carro": 124788.95384615386,
+    "lucro_mensal": 1612807.201666667
   }
 }
