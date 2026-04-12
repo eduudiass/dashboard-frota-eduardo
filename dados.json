@@ -445,7 +445,7 @@
         "jan": 3400.0,
         "fev": 3400.0,
         "mar": 3400.0,
-        "abr": 0.0,
+        "abr": 3400.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -455,8 +455,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 10200.0,
-      "pct_recebido": 0.25
+      "total_recebido": 13600.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 3,
@@ -491,7 +491,7 @@
         "jan": 4000.0,
         "fev": 4000.0,
         "mar": 4000.0,
-        "abr": 0.0,
+        "abr": 4000.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -501,8 +501,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 12000.0,
-      "pct_recebido": 0.25
+      "total_recebido": 16000.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 5,
@@ -514,7 +514,7 @@
         "jan": 4000.0,
         "fev": 4000.0,
         "mar": 4000.0,
-        "abr": 0.0,
+        "abr": 4000.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -524,8 +524,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 12000.0,
-      "pct_recebido": 0.25
+      "total_recebido": 16000.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 6,
@@ -560,7 +560,7 @@
         "jan": 0.0,
         "fev": 0.0,
         "mar": 4000.0,
-        "abr": 0.0,
+        "abr": 4000.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -570,8 +570,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 4000.0,
-      "pct_recebido": 0.08333333333333333
+      "total_recebido": 8000.0,
+      "pct_recebido": 0.16666666666666666
     },
     {
       "numero": 8,
@@ -583,7 +583,7 @@
         "jan": 12000.0,
         "fev": 12000.0,
         "mar": 12000.0,
-        "abr": 0.0,
+        "abr": 12000.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -593,8 +593,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 36000.0,
-      "pct_recebido": 0.25
+      "total_recebido": 48000.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 9,
@@ -606,7 +606,7 @@
         "jan": 2800.0,
         "fev": 0.0,
         "mar": 0.0,
-        "abr": 0.0,
+        "abr": 2800.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -616,8 +616,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 2800.0,
-      "pct_recebido": 0.08333333333333333
+      "total_recebido": 5600.0,
+      "pct_recebido": 0.16666666666666666
     },
     {
       "numero": 10,
@@ -629,7 +629,7 @@
         "jan": 2400.0,
         "fev": 2400.0,
         "mar": 2400.0,
-        "abr": 0.0,
+        "abr": 2400.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -639,8 +639,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 7200.0,
-      "pct_recebido": 0.25
+      "total_recebido": 9600.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 11,
@@ -652,7 +652,7 @@
         "jan": 2800.0,
         "fev": 2800.0,
         "mar": 2800.0,
-        "abr": 0.0,
+        "abr": 2800.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -662,8 +662,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 8400.0,
-      "pct_recebido": 0.25
+      "total_recebido": 11200.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 12,
@@ -675,7 +675,7 @@
         "jan": 0.0,
         "fev": 0.0,
         "mar": 2800.0,
-        "abr": 0.0,
+        "abr": 2800.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -685,7 +685,7 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 2800.0,
+      "total_recebido": 5600.0,
       "pct_recebido": 0.0
     },
     {
@@ -698,7 +698,7 @@
         "jan": 0.0,
         "fev": 0.0,
         "mar": 0.0,
-        "abr": 0.0,
+        "abr": 2800.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -708,8 +708,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 0.0,
-      "pct_recebido": 0.0
+      "total_recebido": 2800.0,
+      "pct_recebido": 0.08333333333333333
     }
   ],
   "gastos": [
@@ -970,7 +970,7 @@
   },
   "vendas_registros": [],
   "resumo": {
-    "receita_mensal": 2400.0,
+    "receita_mensal": 43400.0,
     "total_manutencao": 6870.0,
     "num_servicos": 10,
     "gastos_fixos_mensal": 2579.1983333333333,
@@ -980,7 +980,7 @@
     "veiculos_inativos": 2,
     "total_combustivel_mes": 1400.0,
     "total_km": 1622256.4000000001,
-    "media_por_carro": 184.6153846153846,
-    "lucro_mensal": -7049.198333333334
+    "media_por_carro": 3338.4615384615386,
+    "lucro_mensal": 33950.801666666666
   }
 }
