@@ -263,7 +263,15 @@ if '🚗 Vendas' in wb.sheetnames:
 
 # ═══ RESUMO ═══
 res = data['resumo']
-res['receita_mensal'] = sum(v['aluguel_mensal'] for v in data['veiculos'])
+
+# CORREÇÃO: usa a receita real do mês atual (aba Receitas Mensais)
+# em vez do aluguel previsto do cadastro de veículos
+mes_map = {1:'jan', 2:'fev', 3:'mar', 4:'abr', 5:'mai', 6:'jun',
+           7:'jul', 8:'ago', 9:'set', 10:'out', 11:'nov', 12:'dez'}
+mes_atual = mes_map[datetime.date.today().month]
+res['receita_mensal'] = sum(r['receitas_mensais'].get(mes_atual, 0) for r in data['receitas'])
+print(f"  Mês atual: {mes_atual} | Receita real: R$ {res['receita_mensal']:,.2f}")
+
 res['total_manutencao'] = sum(m['total_gasto'] for m in data['manutencao_resumo'])
 res['num_servicos'] = sum(m['num_servicos'] for m in data['manutencao_resumo'])
 res['gastos_fixos_mensal'] = sum(g['total_mensal'] for g in data['gastos'])
@@ -290,7 +298,6 @@ def mascarar_dados(data):
     for g in data['gastos']:
         g['placa'] = mask_placa(g.get('placa', ''))
     for c in data['compras']:
-        # Mascarar placa no titulo
         titulo = c.get('titulo', '')
         import re
         placas_no_titulo = re.findall(r'[A-Z]{3}\d[A-Z]\d{2}', titulo)

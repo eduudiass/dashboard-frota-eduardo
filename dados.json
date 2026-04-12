@@ -970,7 +970,7 @@
   },
   "vendas_registros": [],
   "resumo": {
-    "receita_mensal": 1622256.4000000001,
+    "receita_mensal": 2400.0,
     "total_manutencao": 6870.0,
     "num_servicos": 10,
     "gastos_fixos_mensal": 2579.1983333333333,
@@ -980,7 +980,7 @@
     "veiculos_inativos": 0,
     "total_combustivel_mes": 1400.0,
     "total_km": 0.0,
-    "media_por_carro": 124788.95384615386,
-    "lucro_mensal": 1612807.201666667
+    "media_por_carro": 184.6153846153846,
+    "lucro_mensal": -7049.198333333334
   }
 }
