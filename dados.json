@@ -8,9 +8,9 @@
       "cor": "BRANCO",
       "motorista": "Vinicius",
       "contato": "",
-      "aluguel_mensal": 299382.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 2400.0,
+      "data_inicio": "",
+      "km_atual": 299382.0,
       "status": "Ativo"
     },
     {
@@ -21,9 +21,9 @@
       "cor": "PRETO",
       "motorista": "Natalia",
       "contato": "",
-      "aluguel_mensal": 103446.6,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 3400.0,
+      "data_inicio": "",
+      "km_atual": 103446.6,
       "status": "Ativo"
     },
     {
@@ -34,10 +34,10 @@
       "cor": "BRANCO",
       "motorista": "Dudu",
       "contato": "",
-      "aluguel_mensal": 88586.5,
-      "data_inicio": "Inativo",
-      "km_atual": 0.0,
-      "status": "Ativo"
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "",
+      "km_atual": 88586.5,
+      "status": "Inativo"
     },
     {
       "numero": 4,
@@ -47,9 +47,9 @@
       "cor": "CINZA",
       "motorista": "Rodrigo",
       "contato": "",
-      "aluguel_mensal": 91790.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "",
+      "km_atual": 91790.0,
       "status": "Ativo"
     },
     {
@@ -60,9 +60,9 @@
       "cor": "CINZA",
       "motorista": "Matheus",
       "contato": "",
-      "aluguel_mensal": 43763.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "",
+      "km_atual": 43763.0,
       "status": "Ativo"
     },
     {
@@ -73,9 +73,9 @@
       "cor": "BRANCO",
       "motorista": "Rafael",
       "contato": "",
-      "aluguel_mensal": 45792.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "",
+      "km_atual": 45792.0,
       "status": "Ativo"
     },
     {
@@ -86,9 +86,9 @@
       "cor": "BRANCO",
       "motorista": "Ricardo",
       "contato": "",
-      "aluguel_mensal": 28966.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 4000.0,
+      "data_inicio": "",
+      "km_atual": 28966.0,
       "status": "Ativo"
     },
     {
@@ -99,9 +99,9 @@
       "cor": "BRANCO",
       "motorista": "Willian",
       "contato": "",
-      "aluguel_mensal": 62965.9,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 12000.0,
+      "data_inicio": "",
+      "km_atual": 62965.9,
       "status": "Ativo"
     },
     {
@@ -112,9 +112,9 @@
       "cor": "BRANCO",
       "motorista": "Diego",
       "contato": "",
-      "aluguel_mensal": 290728.5,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "",
+      "km_atual": 290728.5,
       "status": "Ativo"
     },
     {
@@ -125,9 +125,9 @@
       "cor": "BRANCO",
       "motorista": "Mano",
       "contato": "",
-      "aluguel_mensal": 185895.2,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 2400.0,
+      "data_inicio": "",
+      "km_atual": 185895.2,
       "status": "Ativo"
     },
     {
@@ -138,9 +138,9 @@
       "cor": "PRATA",
       "motorista": "Wagner",
       "contato": "",
-      "aluguel_mensal": 200914.7,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "",
+      "km_atual": 200914.7,
       "status": "Ativo"
     },
     {
@@ -151,9 +151,9 @@
       "cor": "PRETO",
       "motorista": "Alexandre",
       "contato": "",
-      "aluguel_mensal": 92779.0,
-      "data_inicio": "Ativo",
-      "km_atual": 0.0,
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "",
+      "km_atual": 92779.0,
       "status": "Ativo"
     },
     {
@@ -164,10 +164,10 @@
       "cor": "PRETO",
       "motorista": "Sem motorista",
       "contato": "",
-      "aluguel_mensal": 87247.0,
-      "data_inicio": "Inativo",
-      "km_atual": 0.0,
-      "status": "Ativo"
+      "aluguel_mensal": 2800.0,
+      "data_inicio": "",
+      "km_atual": 87247.0,
+      "status": "Inativo"
     }
   ],
   "manutencao_resumo": [
@@ -976,10 +976,10 @@
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
     "total_veiculos": 13,
-    "veiculos_ativos": 13,
-    "veiculos_inativos": 0,
+    "veiculos_ativos": 11,
+    "veiculos_inativos": 2,
     "total_combustivel_mes": 1400.0,
-    "total_km": 0.0,
+    "total_km": 1622256.4000000001,
     "media_por_carro": 184.6153846153846,
     "lucro_mensal": -7049.198333333334
   }

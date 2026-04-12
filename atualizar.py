@@ -87,11 +87,11 @@ for r in range(4, 50):
         "ano": safe_int(ws.cell(r, 4).value),
         "cor": safe_str(ws.cell(r, 5).value),
         "motorista": safe_str(ws.cell(r, 6).value) or 'Sem motorista',
-        "contato": safe_str(ws.cell(r, 7).value),
-        "aluguel_mensal": safe_float(ws.cell(r, 8).value),
-        "data_inicio": date_str(ws.cell(r, 9).value),
-        "km_atual": safe_float(ws.cell(r, 10).value),
-        "status": safe_str(ws.cell(r, 11).value) or 'Ativo'
+        "contato": "",
+        "aluguel_mensal": safe_float(ws.cell(r, 7).value),
+        "data_inicio": "",
+        "km_atual": safe_float(ws.cell(r, 8).value),
+        "status": safe_str(ws.cell(r, 9).value) or 'Ativo'
     })
 
 print(f"  Veiculos: {len(data['veiculos'])}")
