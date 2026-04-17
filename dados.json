@@ -32,12 +32,12 @@
       "modelo": "FORD KA",
       "ano": 2020,
       "cor": "BRANCO",
-      "motorista": "Dudu",
+      "motorista": "Renan",
       "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "",
       "km_atual": 88586.5,
-      "status": "Inativo"
+      "status": "Ativo"
     },
     {
       "numero": 4,
@@ -58,12 +58,12 @@
       "modelo": "VW VIRTUS",
       "ano": 2024,
       "cor": "CINZA",
-      "motorista": "Matheus",
+      "motorista": "Dudu",
       "contato": "",
       "aluguel_mensal": 4000.0,
       "data_inicio": "",
       "km_atual": 43763.0,
-      "status": "Ativo"
+      "status": "Inativo"
     },
     {
       "numero": 6,
@@ -136,12 +136,12 @@
       "modelo": "VW VOYAGE",
       "ano": 2019,
       "cor": "PRATA",
-      "motorista": "Wagner",
+      "motorista": "Sem motorista",
       "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "",
       "km_atual": 200914.7,
-      "status": "Ativo"
+      "status": "Inativo"
     },
     {
       "numero": 12,
@@ -162,12 +162,12 @@
       "modelo": "FORD KA",
       "ano": 2019,
       "cor": "PRETO",
-      "motorista": "Sem motorista",
+      "motorista": "Matheus",
       "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "",
       "km_atual": 87247.0,
-      "status": "Inativo"
+      "status": "Ativo"
     }
   ],
   "manutencao_resumo": [
@@ -176,8 +176,8 @@
       "placa": "IY***16",
       "modelo": "VW GOL",
       "motorista": "Vinicius",
-      "num_servicos": 2,
-      "total_gasto": 3010.0,
+      "num_servicos": 3,
+      "total_gasto": 3190.0,
       "status": "Ativo"
     },
     {
@@ -193,7 +193,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Dudu",
+      "motorista": "Renan",
       "num_servicos": 1,
       "total_gasto": 180.0,
       "status": "Ativo"
@@ -211,7 +211,7 @@
       "numero": 5,
       "placa": "JC***97",
       "modelo": "VW VIRTUS",
-      "motorista": "Matheus",
+      "motorista": "Dudu",
       "num_servicos": 0,
       "total_gasto": 0.0,
       "status": "Ativo"
@@ -265,9 +265,9 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Wagner",
-      "num_servicos": 3,
-      "total_gasto": 2310.0,
+      "motorista": "Sem motorista",
+      "num_servicos": 4,
+      "total_gasto": 2370.0,
       "status": "Ativo"
     },
     {
@@ -283,9 +283,9 @@
       "numero": 13,
       "placa": "FU***98",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Matheus",
       "num_servicos": 0,
-      "total_gasto": 0.0,
+      "total_gasto": 640.0,
       "status": "Ativo"
     }
   ],
@@ -409,6 +409,54 @@
       "custo": 180.0,
       "km_servico": "",
       "prox_revisao": ""
+    },
+    {
+      "numero": 11,
+      "data": "11/02/2026",
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "tipo": "FECHADURA MALA",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 120.0,
+      "km_servico": "",
+      "prox_revisao": ""
+    },
+    {
+      "numero": 12,
+      "data": "11/02/2026",
+      "placa": "IY***16",
+      "modelo": "VW GOL",
+      "tipo": "MOCINETICA",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 180.0,
+      "km_servico": "",
+      "prox_revisao": ""
+    },
+    {
+      "numero": 13,
+      "data": "11/02/2026",
+      "placa": "FU***98",
+      "modelo": "FORD KA",
+      "tipo": "BOIA",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 520.0,
+      "km_servico": "",
+      "prox_revisao": ""
+    },
+    {
+      "numero": 14,
+      "data": "11/02/2026",
+      "placa": "QU***92",
+      "modelo": "VW VOYAGE",
+      "tipo": "PASTILHA",
+      "descricao": "OFICINA",
+      "oficina": "ADA",
+      "custo": 60.0,
+      "km_servico": "",
+      "prox_revisao": ""
     }
   ],
   "receitas": [
@@ -462,7 +510,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Dudu",
+      "motorista": "Renan",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -508,7 +556,7 @@
       "numero": 5,
       "placa": "JC***97",
       "modelo": "VW VIRTUS",
-      "motorista": "Matheus",
+      "motorista": "Dudu",
       "aluguel_previsto": 4000.0,
       "receitas_mensais": {
         "jan": 4000.0,
@@ -646,7 +694,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Wagner",
+      "motorista": "Sem motorista",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -692,7 +740,7 @@
       "numero": 13,
       "placa": "FU***98",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Matheus",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 0.0,
@@ -739,7 +787,7 @@
       "numero": 3,
       "placa": "JA***52",
       "modelo": "FORD KA",
-      "motorista": "Dudu",
+      "motorista": "Renan",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -761,7 +809,7 @@
       "numero": 5,
       "placa": "JC***97",
       "modelo": "VW VIRTUS",
-      "motorista": "Matheus",
+      "motorista": "Dudu",
       "seguro_anual": 4610.01,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -827,7 +875,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Wagner",
+      "motorista": "Sem motorista",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -849,7 +897,7 @@
       "numero": 13,
       "placa": "FU***98",
       "modelo": "FORD KA",
-      "motorista": "Sem motorista",
+      "motorista": "Matheus",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -971,8 +1019,8 @@
   "vendas_registros": [],
   "resumo": {
     "receita_mensal": 43400.0,
-    "total_manutencao": 6870.0,
-    "num_servicos": 10,
+    "total_manutencao": 7750.0,
+    "num_servicos": 12,
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
     "total_veiculos": 13,
@@ -981,6 +1029,6 @@
     "total_combustivel_mes": 1400.0,
     "total_km": 1622256.4000000001,
     "media_por_carro": 3338.4615384615386,
-    "lucro_mensal": 33950.801666666666
+    "lucro_mensal": 33070.801666666666
   }
 }
