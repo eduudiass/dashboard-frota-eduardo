@@ -136,12 +136,12 @@
       "modelo": "VW VOYAGE",
       "ano": 2019,
       "cor": "PRATA",
-      "motorista": "Sem motorista",
+      "motorista": "Luis Fernando",
       "contato": "",
       "aluguel_mensal": 2800.0,
       "data_inicio": "",
       "km_atual": 200914.7,
-      "status": "Inativo"
+      "status": "Ativo"
     },
     {
       "numero": 12,
@@ -265,7 +265,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Sem motorista",
+      "motorista": "Luis Fernando",
       "num_servicos": 4,
       "total_gasto": 2370.0,
       "status": "Ativo"
@@ -694,7 +694,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Sem motorista",
+      "motorista": "Luis Fernando",
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
@@ -875,7 +875,7 @@
       "numero": 11,
       "placa": "QU***92",
       "modelo": "VW VOYAGE",
-      "motorista": "Sem motorista",
+      "motorista": "Luis Fernando",
       "seguro_anual": 0.0,
       "ipva_anual": 0.0,
       "licenciamento": 0.0,
@@ -1024,8 +1024,8 @@
     "gastos_fixos_mensal": 2579.1983333333333,
     "total_investido_compras": 24770.23,
     "total_veiculos": 13,
-    "veiculos_ativos": 11,
-    "veiculos_inativos": 2,
+    "veiculos_ativos": 12,
+    "veiculos_inativos": 1,
     "total_combustivel_mes": 1400.0,
     "total_km": 1622256.4000000001,
     "media_por_carro": 3338.4615384615386,
