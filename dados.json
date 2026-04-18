@@ -516,7 +516,7 @@
         "jan": 2800.0,
         "fev": 2800.0,
         "mar": 0.0,
-        "abr": 0.0,
+        "abr": 2800.0,
         "mai": 0.0,
         "jun": 0.0,
         "jul": 0.0,
@@ -526,8 +526,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 5600.0,
-      "pct_recebido": 0.16666666666666666
+      "total_recebido": 8400.0,
+      "pct_recebido": 0.25
     },
     {
       "numero": 4,
@@ -562,29 +562,6 @@
         "jan": 4000.0,
         "fev": 4000.0,
         "mar": 4000.0,
-        "abr": 4000.0,
-        "mai": 0.0,
-        "jun": 0.0,
-        "jul": 0.0,
-        "ago": 0.0,
-        "set": 0.0,
-        "out": 0.0,
-        "nov": 0.0,
-        "dez": 0.0
-      },
-      "total_recebido": 16000.0,
-      "pct_recebido": 0.3333333333333333
-    },
-    {
-      "numero": 6,
-      "placa": "JC***02",
-      "modelo": "VW VIRTUS",
-      "motorista": "Rafael",
-      "aluguel_previsto": 4000.0,
-      "receitas_mensais": {
-        "jan": 4000.0,
-        "fev": 4000.0,
-        "mar": 4000.0,
         "abr": 0.0,
         "mai": 0.0,
         "jun": 0.0,
@@ -597,6 +574,29 @@
       },
       "total_recebido": 12000.0,
       "pct_recebido": 0.25
+    },
+    {
+      "numero": 6,
+      "placa": "JC***02",
+      "modelo": "VW VIRTUS",
+      "motorista": "Rafael",
+      "aluguel_previsto": 4000.0,
+      "receitas_mensais": {
+        "jan": 4000.0,
+        "fev": 4000.0,
+        "mar": 4000.0,
+        "abr": 4000.0,
+        "mai": 0.0,
+        "jun": 0.0,
+        "jul": 0.0,
+        "ago": 0.0,
+        "set": 0.0,
+        "out": 0.0,
+        "nov": 0.0,
+        "dez": 0.0
+      },
+      "total_recebido": 16000.0,
+      "pct_recebido": 0.3333333333333333
     },
     {
       "numero": 7,
@@ -652,7 +652,7 @@
       "aluguel_previsto": 2800.0,
       "receitas_mensais": {
         "jan": 2800.0,
-        "fev": 0.0,
+        "fev": 2800.0,
         "mar": 0.0,
         "abr": 2800.0,
         "mai": 0.0,
@@ -664,8 +664,8 @@
         "nov": 0.0,
         "dez": 0.0
       },
-      "total_recebido": 5600.0,
-      "pct_recebido": 0.16666666666666666
+      "total_recebido": 8400.0,
+      "pct_recebido": 0.25
     },
     {
       "numero": 10,
@@ -1018,7 +1018,7 @@
   },
   "vendas_registros": [],
   "resumo": {
-    "receita_mensal": 43400.0,
+    "receita_mensal": 46200.0,
     "total_manutencao": 7750.0,
     "num_servicos": 12,
     "gastos_fixos_mensal": 2579.1983333333333,
@@ -1028,7 +1028,7 @@
     "veiculos_inativos": 1,
     "total_combustivel_mes": 1400.0,
     "total_km": 1622256.4000000001,
-    "media_por_carro": 3338.4615384615386,
-    "lucro_mensal": 33070.801666666666
+    "media_por_carro": 3553.846153846154,
+    "lucro_mensal": 35870.801666666666
   }
 }
